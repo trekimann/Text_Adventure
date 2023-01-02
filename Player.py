@@ -1,4 +1,3 @@
-import random
 from TextColour import TC
 from Item import Item
 from BaseClasses.Character import Character
@@ -19,10 +18,12 @@ class Player(Character):
     self.kills = 0
     self.bestiary = {}
     self.moves = max_moves
-
-    default_key = Item("default",0,0,0,"","key",True,False)
-
-    self.keys = {default_key.name:{"key":default_key,"count":max_moves}}
+    self.keys = {
+      "default": {
+        "key": Item("default", 0, 0, 0, "", "key", True, False),
+        "count": max_moves,
+      }
+    }
       
   def check_health(self):
     if self.health <= 0:
@@ -48,9 +49,9 @@ class Player(Character):
     if self.get_inventory_weight() + item.weight > self.max_inventory_weight:
         print("Cannot add item to inventory. Exceeds maximum weight.")
         return
-    # Check if its a key
     print(f"You got a {tc.colour(item.item_colour)}{item.name}{tc.colour()}")
 
+    # Check if its a key
     if item.type == "key":
       self.collect_key(item)
       return
@@ -109,17 +110,6 @@ class Player(Character):
     self.moves -= 1
     if self.moves < 0:
       self.health = 0
-
-  # def attack(self):
-  #     # Calculate the damage dealt to the player
-  #     damage = round(random.uniform(1.8, 3.5),2)
-  #     print(f"{self.name} attacks for {tc.colour('red')}{damage}{tc.colour()} points of damage.")
-  #     return damage
-
-  # def is_dead(self):
-  #   if self.health <= 0:
-  #     print("You Died")
-  #   return self.health <= 0
 
   def enemy_killed(self, enemy):
     self.kills += 1
