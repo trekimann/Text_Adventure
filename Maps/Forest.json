@@ -1,0 +1,157 @@
+{
+  "name": "Enchanted Forest",
+  "size": {
+    "width": 2,
+    "height": 2
+  },
+  "playerData": {
+    "startingX": 0,
+    "startingY": 0
+  },
+  "items": [
+    {
+      "itemType": "None",
+      "name": "None",
+      "weight": 0,
+      "value": 0,
+      "cost": 0,
+      "multiplier": 0,
+      "description": "",
+      "equippable": false,
+      "equipped": false,
+      "colour": "",
+      "healthRecovery": 0
+    },
+    {
+      "itemType": "Health",
+      "name": "Apple",
+      "healthRecovery": 1,
+      "description": "An Apple",
+      "equippable": false,
+      "equipped": false,
+      "colour": "green",
+      "weight": 0.1,
+      "value": 1,
+      "cost": 10,
+      "multiplier": 0
+    },
+    {
+      "itemType": "key",
+      "name": "Magic Key",
+      "weight": 0.0,
+      "value": 0,
+      "cost": 0,
+      "multiplier": 0,
+      "description": "A Magic Key to open the Wizards Armoury",
+      "equippable": false,
+      "equipped": false,
+      "colour": "yellow",
+      "healthRecovery": 0
+    },
+    {
+      "itemType": "weapon",
+      "name": "Magic staff",
+      "weight": 1.0,
+      "value": 100,
+      "cost": 10000000000,
+      "multiplier": 0,
+      "description": "A Magic staff collected from the Wizards Armoury",
+      "equippable": true,
+      "equipped": false,
+      "colour": "bright blue",
+      "healthRecovery": 0
+    }
+  ],
+  "enemies": [
+    {
+      "enemyType": "None",
+      "name": "None",
+      "description": "None",
+      "health": 0,
+      "loot_chance": 0,
+      "loot": "None",
+      "damage_resistance_multiplier": 0.1,
+      "attack_multiplier": 0.1
+    },
+    {
+      "enemyType": "Goblin",
+      "name": "Goblin",
+      "description": "The Goblin is a small, green-skinned humanoid creature with pointed ears and a mischievous grin. It is known for its cunning and quick reflexes, making it a formidable opponent in combat. Despite its small size, the Goblin is capable of causing significant damage with its sharp teeth and claws. It is often found in dark and gloomy places, seeking out treasure and causing trouble wherever it goes. With its devious nature and love of chaos, the Goblin is not to be underestimated.",
+      "health": 8,
+      "loot_chance": 0.1,
+      "loot": "None",
+      "damage_resistance_multiplier": 1.2,
+      "attack_multiplier": 1.1
+    },
+    {
+      "enemyType": "Skeleton",
+      "name": "Skeleton",
+      "description": "The Skeleton is a bony humanoid creature with a blank, skull-like face. Its bones are held together by some unknown force, allowing it to move and attack despite its seemingly fragile appearance. It is often found in dark, abandoned places such as caves or tombs, and is known for its cunning and ferocity in battle. Despite its supernatural origins, the Skeleton is vulnerable to physical attacks and can be defeated with a strong enough blow. However, it is resistant to some forms of damage and can be a formidable opponent if not taken seriously",
+      "health": 5,
+      "loot_chance": 1,
+      "loot": "Magic Key",
+      "damage_resistance_multiplier": 0.8,
+      "attack_multiplier": 0.8
+    },
+    {
+      "enemyType": "Orc",
+      "name": "Orc",
+      "description": "Orcs are large, brutish creatures with thick green skin, tusks, and a love for battle and pillaging. They are known for their strength and ferocity in combat, often wielding massive weapons and wearing heavy armour. They tend to live in large, organized clans, and are often found in fortified strongholds or fortresses.",
+      "health": 15,
+      "loot_chance": 0.1,
+      "loot": "None",
+      "damage_resistance_multiplier": 2,
+      "attack_multiplier": 1.5
+    }
+  ],
+  "mapSquares": [
+    {
+      "coordinates": [
+        0,
+        0
+      ],
+      "description": "Your house is here. It's a lovely small cabin from where you can start your adventure. To the North is an Orc Fortress, a towering structure of rough hewn stone, with smoke rising from its many chimneys. To the East is a dark and ominous Cave, its entrance hidden behind a veil of vines and underbrush. To the West is the wizard's Armoury, a small and unassuming building, its walls lined with shelves and racks of magical items.",
+      "chanceOfEnemies": 1,
+      "enemyType": "Goblin",
+      "chanceOfLoot": 0.5,
+      "lootType": "Health Potion",
+      "requiredKey": "default"
+    },
+    {
+      "coordinates": [
+        0,
+        1
+      ],
+      "description": "The Spooky Cave is a dark and foreboding place. The air is musty and the walls are damp. You can hear the sound of dripping water in the distance, and you can see faint glimmers of light coming from deep within the cave. You're not sure what dangers may lurk within, but you know that you'll need to be careful if you want to survive.",
+      "chanceOfEnemies": 1,
+      "enemyType": "Skeleton",
+      "chanceOfLoot": 0.7,
+      "lootType": "Gold",
+      "requiredKey": "default"
+    },
+    {
+      "coordinates": [
+        1,
+        0
+      ],
+      "description": "The Orc Fortress is a large, imposing structure made of rough, grey stone. It towers over the surrounding forest, casting a shadow over the nearby trees. The walls are adorned with various symbols and markings, likely denoting the strength and power of the Orc clan that resides within. The gates stand open, inviting adventurers to explore the dark corridors and chambers within. However, be warned: the Orcs are a fierce and dangerous race, and they will not hesitate to attack anyone who dares to enter their fortress.",
+      "chanceOfEnemies": 0.3,
+      "enemyType": "Orc",
+      "chanceOfLoot": 0.4,
+      "lootType": "Jewellery",
+      "requiredKey": "default"
+    },
+    {
+      "coordinates": [
+        1,
+        1
+      ],
+      "description": "The Wizards Armoury is a place of great magical power. It is filled with ancient tomes, powerful weapons and artifacts imbued with magical energy. The walls are adorned with intricate tapestries depicting ancient battles and powerful spells. The air is heavy with the scent of incense and the faint hum of magical energy. It is a place of great intrigue and danger, but also great potential for those brave enough to venture within.",
+      "chanceOfEnemies": 0.0,
+      "enemyType": "None",
+      "chanceOfLoot": 0.9,
+      "lootType": "Magic Weapon",
+      "requiredKey": "Magic Key"
+    }
+  ]
+}

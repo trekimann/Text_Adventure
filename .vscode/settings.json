@@ -1,0 +1,8 @@
+{
+    "cSpell.words": [
+        "lootable"
+    ],
+    "python.analysis.extraPaths": [
+        "./BaseClasses"
+    ]
+}
