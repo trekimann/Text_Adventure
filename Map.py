@@ -46,7 +46,6 @@ class Map:
       print(f"{location.description}")
       if location.has_enemy():
         # trigger fight
-        print("Something to fight")
         enemy = self.enemy_options[location.enemy_type]
         enemy.reset()
         battle = Battle(player = player, enemy = enemy)
@@ -58,6 +57,7 @@ class Map:
       if location.has_loot():
         # trigger looting option
         print("Something to pick up")
+        location.loot_location()
       else:
         print("Nothing to pick up")
 

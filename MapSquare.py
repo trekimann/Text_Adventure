@@ -1,5 +1,7 @@
 import random
 
+from Player import Player
+
 
 class MapSquare:
     def __init__(self, description, enemy_chance, loot_chance, enemy_type, loot_type, enemy_options, key = None):
@@ -22,3 +24,12 @@ class MapSquare:
     
     def enemy_killed(self):
         self.dead_enemies += 1
+
+    def loot_location(self, player: Player):
+        # Display the loot at the location
+        # Present the player a chance to see their inventory
+        # Present the player a chance to drop items from their inventory
+        # Give the player the option to loot if they want.
+            # Remove the loot from the location if its special loot
+        
+        pass
