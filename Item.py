@@ -17,3 +17,10 @@ class Item:
 
     def colour(self):
         return tc.colour(self.item_colour)
+    
+    def item_description(self):
+        print(f"{tc.colour(self.item_colour)}{self.name}{tc.colour()}.")
+        print(f"{self.description}")
+        print(f"Weight: {self.weight}kg")
+        print(f"value:  {self.value}")
+        print(f"Cost:   {self.cost}")

@@ -18,6 +18,7 @@ class Player(Character):
     self.kills = 0
     self.bestiary = {}
     self.moves = max_moves
+    self.money = {}
     self.keys = {
       "default": {
         "key": Item("default", 0, 0, 0, "", "key", True, False),
@@ -44,12 +45,11 @@ class Player(Character):
 
   def add_to_inventory(self, item):
     if item is None:
-      return
+      return False
     # Check if adding the item to the inventory would exceed the maximum weight
     if self.get_inventory_weight() + item.weight > self.max_inventory_weight:
         print("Cannot add item to inventory. Exceeds maximum weight.")
-        return
-    print(f"You got a {tc.colour(item.item_colour)}{item.name}{tc.colour()}")
+        return False
 
     # Check if its a key
     if item.type == "key":
@@ -57,11 +57,34 @@ class Player(Character):
       return
     elif item.type == "weapon":
       self.equip_weapon(item)
+    elif item.type == "money":
+      return self.add_money(item)
+      
     # Add item to inventory
     if item.name in self.inventory.keys():
       self.inventory[item.name]['count'] += 1
     else:
       self.inventory[item.name] = {'item':item,'count':1}
+    
+    print(f"You got a {tc.colour(item.item_colour)}{item.name}{tc.colour()}")
+    return True
+  
+  def add_money(self, money):
+    
+    return True
+
+  def remove_from_inventory(self, item_name, count=1):
+    if item_name not in self.inventory.keys():
+        print("Item not in inventory.")
+        return
+    if self.inventory[item_name]['count'] < count:
+        print("Not enough of that item in inventory.")
+        return
+
+    self.inventory[item_name]['count'] -= count
+    if self.inventory[item_name]['count'] == 0:
+        del self.inventory[item_name]
+    print(f"{count} {item_name} removed from inventory.")
 
   def collect_key(self, key):
     # Check if the key is already there
