@@ -1,0 +1,51 @@
+{
+    "name": "",
+    "size": {
+        "width": 0,
+        "height": 0
+    },
+    "playerData": {
+        "startingX": 0,
+        "startingY": 0
+    },
+    "items": [
+        {
+            "itemType": "",
+            "name": "",
+            "weight": 0,
+            "value": 0,
+            "cost": 0,
+            "multiplier": 0,
+            "description": "",
+            "equippable": false,
+            "equipped": false,
+            "colour": "",
+            "healthRecovery": 0
+        }
+    ],
+    "enemies": [
+        {
+            "enemyType": "",
+            "name": "",
+            "description": "",
+            "health": 0,
+            "loot_chance": 0,
+            "loot": "",
+            "damage_resistance_multiplier": 0,
+            "attack_multiplier": 0
+        }
+    ],
+    "mapSquares": [
+        {
+            "coordinates": [
+                0,
+                0
+            ],
+            "description": "",
+            "chanceOfEnemies": 0,
+            "enemyType": "",
+            "chanceOfLoot": 0,
+            "lootType": ""
+        }
+    ]
+}
