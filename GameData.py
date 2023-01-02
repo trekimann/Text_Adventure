@@ -54,7 +54,8 @@ class GameData:
                     enemy_chance=square_data['chanceOfEnemies'],
                     loot_chance=square_data['chanceOfLoot'],
                     enemy_type=square_data['enemyType'],
-                    loot_type=square_data['lootType'],
+                    loot=self.item_options[square_data['lootName']],
+                    loot_amount=square_data['lootAmount'],
                     enemy_options=self.enemy_options[square_data['enemyType']],
                     key=square_data['requiredKey']
                 )

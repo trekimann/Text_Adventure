@@ -57,7 +57,7 @@ class Map:
       if location.has_loot():
         # trigger looting option
         print("Something to pick up")
-        location.loot_location()
+        location.loot_location(player)
       else:
         print("Nothing to pick up")
 

@@ -23,7 +23,7 @@
       "healthRecovery": 0
     },
     {
-      "itemType": "Health",
+      "itemType": "health",
       "name": "Apple",
       "healthRecovery": 1,
       "description": "An Apple",
@@ -50,7 +50,7 @@
     },
     {
       "itemType": "weapon",
-      "name": "Magic staff",
+      "name": "Magic Staff",
       "weight": 1.0,
       "value": 100,
       "cost": 10000000000,
@@ -59,6 +59,32 @@
       "equippable": true,
       "equipped": false,
       "colour": "bright blue",
+      "healthRecovery": 0
+    },
+    {
+      "itemType": "money",
+      "name": "Gold Coins",
+      "weight": 0.1,
+      "value": 1,
+      "cost": 1,
+      "multiplier": 0,
+      "description": "A Simple Gold Coin",
+      "equippable": false,
+      "equipped": false,
+      "colour": "yellow",
+      "healthRecovery": 0
+    },
+    {
+      "itemType": "money",
+      "name": "Jewellery",
+      "weight": 1,
+      "value": 10,
+      "cost": 10,
+      "multiplier": 0,
+      "description": "A plain item of Jewellery",
+      "equippable": false,
+      "equipped": false,
+      "colour": "yellow",
       "healthRecovery": 0
     }
   ],
@@ -114,7 +140,9 @@
       "chanceOfEnemies": 1,
       "enemyType": "Goblin",
       "chanceOfLoot": 0.5,
-      "lootType": "Health Potion",
+      "lootType": "health",
+      "lootName": "Apple",
+      "lootAmount": 1,
       "requiredKey": "default"
     },
     {
@@ -126,7 +154,9 @@
       "chanceOfEnemies": 1,
       "enemyType": "Skeleton",
       "chanceOfLoot": 0.7,
-      "lootType": "Gold",
+      "lootType": "money",
+      "lootName": "Gold Coins",
+      "lootAmount": 100,
       "requiredKey": "default"
     },
     {
@@ -138,7 +168,9 @@
       "chanceOfEnemies": 0.3,
       "enemyType": "Orc",
       "chanceOfLoot": 0.4,
-      "lootType": "Jewellery",
+      "lootType": "money",
+      "lootName": "Jewellery",
+      "lootAmount": 10,
       "requiredKey": "default"
     },
     {
@@ -149,8 +181,10 @@
       "description": "The Wizards Armoury is a place of great magical power. It is filled with ancient tomes, powerful weapons and artifacts imbued with magical energy. The walls are adorned with intricate tapestries depicting ancient battles and powerful spells. The air is heavy with the scent of incense and the faint hum of magical energy. It is a place of great intrigue and danger, but also great potential for those brave enough to venture within.",
       "chanceOfEnemies": 0.0,
       "enemyType": "None",
-      "chanceOfLoot": 0.9,
-      "lootType": "Magic Weapon",
+      "chanceOfLoot": 1,
+      "lootType": "weapon",
+      "lootName": "Magic Staff",
+      "lootAmount": 1,
       "requiredKey": "Magic Key"
     }
   ]

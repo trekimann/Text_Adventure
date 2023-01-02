@@ -1,15 +1,17 @@
 import random
+from Item import Item
 
 from Player import Player
 
 
 class MapSquare:
-    def __init__(self, description, enemy_chance, loot_chance, enemy_type, loot_type, enemy_options, key = None):
+    def __init__(self, description, enemy_chance, loot_chance, enemy_type, enemy_options, loot: Item, loot_amount = 1, key = None):
         self.description = description
         self.enemy_chance = enemy_chance
         self.loot_chance = loot_chance
         self.enemy_type = enemy_type
-        self.loot = loot_type
+        self.loot = loot
+        self.loot_amount = loot_amount
         self.enemy_options = enemy_options
         self.dead_enemies = 0
         self.key = key
