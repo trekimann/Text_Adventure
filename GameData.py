@@ -3,6 +3,7 @@ import json
 from Enemy import Enemy
 from MapSquare import MapSquare
 from Item import Item
+from Weapon import Weapon
 
 class GameData:
     def __init__(self):
@@ -21,7 +22,20 @@ class GameData:
             self.player_data['starting_location']=(data['playerData']['startingX'],data['playerData']['startingY'])
             # Loot options
             for loot_options in data['items']:
-              loot = Item(
+              if loot_options['itemType'] != "weapon":
+                loot = Item(
+                  name = loot_options['name'],
+                  weight= loot_options['weight'],
+                  health_recovery=loot_options['healthRecovery'],
+                  value=loot_options['value'],
+                  description=loot_options['description'],
+                  equipped=False,
+                  equippable=loot_options['equippable'],
+                  item_colour=loot_options['colour'],
+                  type=loot_options['itemType'],
+                  cost=loot_options['cost'])
+              else:
+                loot = Weapon(
                 name = loot_options['name'],
                 weight= loot_options['weight'],
                 health_recovery=loot_options['healthRecovery'],
@@ -31,7 +45,10 @@ class GameData:
                 equippable=loot_options['equippable'],
                 item_colour=loot_options['colour'],
                 type=loot_options['itemType'],
-                cost=loot_options['cost'])
+                cost=loot_options['cost'],
+                damage_range=(loot_options['damageRangeMin'],loot_options['damageRangeMax']),
+                damage_modifier=loot_options['damageModifier']
+                )
               self.item_options[loot.name] = loot
 
             # Enemy Options

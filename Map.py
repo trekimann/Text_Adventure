@@ -54,12 +54,8 @@ class Map:
       else:
         print("Nothing to fight")
 
-      if location.has_loot():
-        # trigger looting option
-        print("Something to pick up")
-      else:
-        print("Nothing to pick up")
-
+      location.loot_location(player)
+      
     def try_to_move(self, direction, x, y):
       # try to move the player in this direction.
       if direction == "north":

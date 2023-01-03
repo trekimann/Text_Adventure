@@ -59,12 +59,15 @@
       "equippable": true,
       "equipped": false,
       "colour": "bright blue",
-      "healthRecovery": 0
+      "healthRecovery": 0,
+      "damageRangeMin": 1,
+      "damageRangeMax": 3,
+      "damageModifier": 1
     },
     {
       "itemType": "money",
       "name": "Gold Coins",
-      "weight": 0.1,
+      "weight": 0.01,
       "value": 1,
       "cost": 1,
       "multiplier": 0,
@@ -77,7 +80,7 @@
     {
       "itemType": "money",
       "name": "Jewellery",
-      "weight": 1,
+      "weight": 0.1,
       "value": 10,
       "cost": 10,
       "multiplier": 0,

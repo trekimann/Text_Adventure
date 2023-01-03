@@ -70,21 +70,26 @@ class Player(Character):
     return True
   
   def add_money(self, money):
-    
+      # Add item to inventory
+    if money.name in self.money.keys():
+      self.money[money.name]['count'] += 1
+    else:
+      self.money[money.name] = {'item':money,'count':1}
     return True
 
   def remove_from_inventory(self, item_name, count=1):
     if item_name not in self.inventory.keys():
         print("Item not in inventory.")
-        return
+        return False
     if self.inventory[item_name]['count'] < count:
         print("Not enough of that item in inventory.")
-        return
+        return False
 
     self.inventory[item_name]['count'] -= count
     if self.inventory[item_name]['count'] == 0:
         del self.inventory[item_name]
     print(f"{count} {item_name} removed from inventory.")
+    return True
 
   def collect_key(self, key):
     # Check if the key is already there
@@ -97,7 +102,10 @@ class Player(Character):
     # Calculate total weight of items in inventory
     total_weight = 0
     for item in self.inventory:
-        total_weight += self.inventory[item]['item'].weight
+      total_weight += self.inventory[item]['item'].weight
+    for money in self.money:
+      total_weight += self.money[money]['item'].weight
+
     return total_weight
 
   def check_inventory(self):
@@ -112,6 +120,24 @@ class Player(Character):
           key = self.keys[key_name]['key']
           print(f"   {tc.colour(key.item_colour)}{key_name}{tc.colour()} ({key.weight}kg each) x{self.keys[key.name]['count']}")
           print("      "+key.description)
+      print("Money:")
+      money_value = 0
+      for money_type in self.money:
+        money = self.money[money_type]['item']
+        print(f"   {tc.colour(money.item_colour)}{money_type}{tc.colour()} ({money.weight}kg each) x{self.money[money_type]['count']}")
+        print("      "+money.description)
+        money_value += money.value * self.money[money_type]['count']
+      print(f"Money total value: {money_value}")
+      print(f"Equipped weapon: {tc.colour(self.weapon.item_colour)}{self.weapon.name}{tc.colour()}")
+      print(f"{self.name} inventory weight: {self.get_inventory_weight()}/{self.max_inventory_weight}")
+      print(f"Do you want to drop something?")
+      choice = input("Yes or No: ")
+      if choice.lower().startswith('y'):
+          item_name = input("Enter the item name: ")
+          item_number = input("How many do you want to drop?: ")
+          decision = input(f"Are you sure you want to permanently discard {item_name} x{item_number}? Yes or No: ")
+          if decision.lower().startswith('y'):
+            self.remove_from_inventory(item_name, item_number)
 
   def use_item(self):
     fields = self.inventory.keys()

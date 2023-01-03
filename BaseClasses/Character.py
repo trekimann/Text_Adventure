@@ -26,10 +26,13 @@ class Character:
             absorbed_damage = round(random.uniform(0.1, 1),2)
             print(f"{self.name}'s armour absorbs {tc.colour('blue')}{absorbed_damage}{tc.colour()} points of damage")
             # Reduce the armour's hit points by the absorbed damage
-            self.armour -= absorbed_damage
+            if absorbed_damage > damage:
+                self.armour -= damage
+            else:
+                self.armour -= absorbed_damage
+                # Reduce the remaining damage from the player's health
+                self.health -= round((damage - absorbed_damage) * self.damage_resistance_multiplier,2)
             print(f"{self.name} has {tc.colour('blue')}{self.armour}{tc.colour()} armour hit points remaining")
-            # Reduce the remaining damage from the player's health
-            self.health -= round((damage - absorbed_damage) * self.damage_resistance_multiplier,2)
         else:
             self.health -= round(damage * self.damage_resistance_multiplier,2)
                 
