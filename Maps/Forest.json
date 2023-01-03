@@ -4,6 +4,7 @@
     "width": 2,
     "height": 2
   },
+  "mapDescription":"An enchanted Forest made up of an orc Fortress, spooky Cave, players home and a Wizards armoury.",
   "playerData": {
     "startingX": 0,
     "startingY": 0
@@ -141,11 +142,11 @@
       ],
       "description": "Your house is here. It's a lovely small cabin from where you can start your adventure. To the North is an Orc Fortress, a towering structure of rough hewn stone, with smoke rising from its many chimneys. To the East is a dark and ominous Cave, its entrance hidden behind a veil of vines and underbrush. To the West is the wizard's Armoury, a small and unassuming building, its walls lined with shelves and racks of magical items.",
       "chanceOfEnemies": 1,
-      "enemyType": "Goblin",
       "chanceOfLoot": 0.5,
-      "lootType": "health",
+      "enemyType": "Goblin",
       "lootName": "Apple",
       "lootAmount": 1,
+      "lootType": "health",
       "requiredKey": "default"
     },
     {
