@@ -17,7 +17,11 @@
             "weight": 0,
             "value": 0,
             "cost": 0,
-            "multiplier": 0
+            "multiplier": 0,
+            "healthRecovery": 0,
+            "equippable": false,
+            "equipped": false,
+            "colour": "yellow"
         },
         {
             "itemType": "money",
@@ -52,7 +56,7 @@
             "description": "A hypospray used to administer medical treatments and medications",
             "equippable": false,
             "equipped": false,
-            "colour": "silver",
+            "colour": "yellow",
             "weight": 0.1,
             "value": 10,
             "cost": 100,
@@ -68,7 +72,7 @@
             "description": "A handheld energy weapon used by Starfleet",
             "equippable": true,
             "equipped": false,
-            "colour": "silver",
+            "colour": "yellow",
             "healthRecovery": 0,
             "damageRangeMin": 3,
             "damageRangeMax": 5,
@@ -96,6 +100,7 @@
             "health": 0,
             "loot_chance": 0,
             "loot_type": "",
+            "loot": "None",
             "damage_resistance_multiplier": 0.1,
             "attack_multiplier": 0.1
         },
@@ -115,7 +120,7 @@
             "description": "The Kazon are a warlike, faction-based species native to the Delta Quadrant. They are known for their aggressive expansionist policies, frequently attacking and pillaging other civilizations for resources. The Kazon are a formidable opponent in combat. The Kazon are known to be ruthless and cunning in their tactics.",
             "health": 10,
             "loot_chance": 0.5,
-            "loot": "Kazon Weapons",
+            "loot": "Federation Credits",
             "damage_resistance_multiplier": 1.5,
             "attack_multiplier": 1.2
         },
@@ -124,8 +129,8 @@
             "name": "species 8472",
             "description": "Species 8472 is a highly advanced, extra-dimensional alien species that poses a significant threat to the safety of the galaxy. They are known for their powerful biotechnology, which allows them to adapt to any environment and effectively counter any attack. The Borg have attempted to assimilate them on multiple occasions, but have always been unsuccessful due to their advanced resistance to assimilation. They are highly aggressive and will stop at nothing to protect their own interests.",
             "health": 100,
-            "loot_chance": 0.3,
-            "loot": "None",
+            "loot_chance": 1,
+            "loot": "Gold-Pressed Latinum",
             "damage_resistance_multiplier": 1.5,
             "attack_multiplier": 2.0
         }
@@ -151,11 +156,11 @@
                 1
             ],
             "description": "Open space",
-            "chanceOfEnemies": 1,
+            "chanceOfEnemies": 0,
             "chanceOfLoot": 0.5,
-            "enemyType": "Goblin",
-            "lootName": "Apple",
-            "lootAmount": 1,
+            "enemyType": "None",
+            "lootName": "None",
+            "lootAmount": 0,
             "lootType": "health",
             "requiredKey": "default"
         },
@@ -209,10 +214,10 @@
             "description": "A mysterious nebula fills the sky, swirling with all the colors of the rainbow. The gases and particles are so dense that they obscure most of the stars and celestial bodies, making navigation in this region treacherous. Strange energy readings and anomalies have been reported in this area, leading some to believe that it may be home to unknown life forms or hidden technologies.",
             "chanceOfEnemies": 0.5,
             "chanceOfLoot": 0.1,
-            "enemyType": "random",
-            "lootName": "random",
-            "lootAmount": 1,
-            "lootType": "health",
+            "enemyType": "Borg",
+            "lootName": "Federation Credits",
+            "lootAmount": 1000,
+            "lootType": "money",
             "requiredKey": "default"
         },
         {
@@ -223,7 +228,7 @@
             "description": "An abandoned Federation shuttle sits on the surface of the planet. It looks like it has been there for some time, with the paint starting to fade and some parts showing signs of damage. You approach the shuttle and see that the door is slightly open, beckoning you to enter. As you step inside, you can see that the interior of the shuttle is in disarray, with equipment and supplies scattered across the floor. It looks like there was a struggle here at some point. You wonder what could have happened to the crew and what secrets the shuttle might hold.",
             "chanceOfEnemies": 0,
             "chanceOfLoot": 1,
-            "enemyType": "none",
+            "enemyType": "None",
             "lootName": "Phaser Rifle",
             "lootAmount": 1,
             "lootType": "weapon",
@@ -238,7 +243,7 @@
             "chanceOfEnemies": 0.9,
             "chanceOfLoot": 0.5,
             "enemyType": "8472",
-            "lootName": "Gold-pressed latinum",
+            "lootName": "Gold-Pressed Latinum",
             "lootAmount": 1,
             "lootType": "money",
             "requiredKey": "default"
