@@ -1,13 +1,13 @@
 {
     "name": "Delta Quadrant",
     "size": {
-        "width": 2,
-        "height": 2
+        "width": 3,
+        "height": 3
     },
-    "mapDescription": "",
+    "mapDescription": "The Delta Quadrant is a vast and largely unexplored region of space, filled with dangers and mysteries. As you chart a course through this uncharted territory, you'll encounter abandoned Borg cubes, hostile Kazon planets, and swirling nebulae filled with unknown life forms. You'll also encounter friendly ships and locations, such as federation shuttles and shipyards, where you can find valuable loot and supplies. But be on guard at all times, as danger lurks around every corner in this treacherous region of space.",
     "playerData": {
-        "startingX": 1,
-        "startingY": 1
+        "startingX": 2,
+        "startingY": 2
     },
     "items": [
         {
@@ -20,49 +20,72 @@
             "multiplier": 0
         },
         {
-            "itemType": "Money",
+            "itemType": "money",
+            "name": "Gold-Pressed Latinum",
+            "description": "A highly valuable currency used by many species throughout the Alpha Quadrant, particularly the Ferengi Alliance. Latinum is typically stored in small, shiny bars or slips, and is prized for its rarity and inherent value.",
+            "weight": 1,
+            "value": 1000,
+            "cost": 1000,
+            "multiplier": 0,
+            "equippable": false,
+            "equipped": false,
+            "colour": "yellow",
+            "healthRecovery": 0
+        },
+        {
+            "itemType": "money",
             "name": "Federation Credits",
-            "description": "Federation Credits are a form of currency used throughout the United Federation of Planets. They are often used to purchase goods and services in markets and shops, and can be traded or exchanged for other forms of currency. Federation Credits are issued by the Federation Government and are widely accepted throughout the galaxy as a reliable and secure form of payment.",
-            "weight": 0,
+            "weight": 0.01,
             "value": 1,
-            "cost": 0,
+            "cost": 1,
+            "multiplier": 0,
+            "description": "Standard currency used by the United Federation of Planets",
+            "equippable": false,
+            "equipped": false,
+            "colour": "yellow",
+            "healthRecovery": 0
+        },
+        {
+            "itemType": "health",
+            "name": "Hypospray",
+            "healthRecovery": 5,
+            "description": "A hypospray used to administer medical treatments and medications",
+            "equippable": false,
+            "equipped": false,
+            "colour": "silver",
+            "weight": 0.1,
+            "value": 10,
+            "cost": 100,
             "multiplier": 0
         },
         {
-            "itemType": "Health",
-            "name": "Hypospray",
-            "description": "A device used by Starfleet medical personnel to administer medication or other substances to a patient. It can be programmed to deliver a specific dosage and can be used to treat a variety of ailments.",
+            "itemType": "weapon",
+            "name": "Phaser Rifle",
             "weight": 0.5,
-            "value": 5,
-            "cost": 50,
-            "multiplier": 1.5
+            "value": 100,
+            "cost": 1000,
+            "multiplier": 0,
+            "description": "A handheld energy weapon used by Starfleet",
+            "equippable": true,
+            "equipped": false,
+            "colour": "silver",
+            "healthRecovery": 0,
+            "damageRangeMin": 3,
+            "damageRangeMax": 5,
+            "damageModifier": 1
         },
         {
-            "itemType": "Weapon",
-            "name": "Phaser",
-            "description": "A handheld energy weapon used by Starfleet personnel. It can be set to stun or kill and has multiple settings for different levels of firepower.",
-            "weight": 1,
-            "value": 10,
-            "cost": 100,
-            "multiplier": 2
-        },
-        {
-            "itemType": "Armour",
-            "name": "Tactical Vest",
-            "description": "A lightweight vest worn by Starfleet security personnel to provide additional protection in combat situations. It is made of durable materials and has pockets for carrying various equipment.",
-            "weight": 2,
-            "value": 15,
-            "cost": 150,
-            "multiplier": 1.5
-        },
-        {
-            "itemType": "Miscellaneous",
-            "name": "Tricorder",
-            "description": "A handheld device used by Starfleet personnel to scan and analyze their surroundings. It can detect various types of energy and matter and has a wide range of other functions, including communication and navigation.",
-            "weight": 0.75,
-            "value": 5,
-            "cost": 75,
-            "multiplier": 1
+            "itemType": "key",
+            "name": "Access Card",
+            "weight": 0.0,
+            "value": 0,
+            "cost": 0,
+            "multiplier": 0,
+            "description": "An access card used to open doors and access restricted areas on the ship",
+            "equippable": false,
+            "equipped": false,
+            "colour": "yellow",
+            "healthRecovery": 0
         }
     ],
     "enemies": [
@@ -79,78 +102,160 @@
         {
             "enemyType": "Borg",
             "name": "Borg Drone",
-            "description": "The Borg are a race of cybernetic beings, combining organic and technological elements. They are known for their relentless pursuit of perfection through assimilation, and their ability to adapt to almost any threat. The Borg Drone is a standard unit of the Borg Collective, with a partially cybernetic body and a single-minded focus on completing its assigned tasks. It is a formidable opponent in combat, with enhanced strength and durability, and the ability to adapt to counter almost any attack.",
-            "health": 20,
-            "loot_chance": 0.2,
-            "loot_type": "Money",
+            "description": "A member of the Borg Collective, a race of cybernetic beings who seek to assimilate other species into their collective. The Borg Drone is a formidable opponent, with advanced technology and weapons at its disposal. Its organic and artificial parts are seamlessly integrated, making it immune to many forms of attack. The Borg's primary goal is to assimilate other species and technologies into the Collective, and they will stop at nothing to achieve this goal.",
+            "health": 50,
+            "loot_chance": 0.3,
+            "loot": "Federation Credits",
             "damage_resistance_multiplier": 1.5,
-            "attack_multiplier": 1.3
+            "attack_multiplier": 1.5
         },
         {
             "enemyType": "Kazon",
-            "name": "Kazon Warrior",
-            "description": "The Kazon are a race of primitive and aggressive humanoids, known for their martial prowess and fierce territoriality. The Kazon Warrior is a formidable opponent in close combat, wielding a variety of primitive weapons and exhibiting a high tolerance for pain. They are often found in the lawless regions of space, where they engage in piracy and territorial battles with other factions.",
-            "health": 15,
-            "loot_chance": 0.1,
-            "loot_type": "Money",
-            "damage_resistance_multiplier": 1.2,
-            "attack_multiplier": 1.1
+            "name": "Kazon Raider",
+            "description": "The Kazon are a warlike, faction-based species native to the Delta Quadrant. They are known for their aggressive expansionist policies, frequently attacking and pillaging other civilizations for resources. The Kazon are a formidable opponent in combat. The Kazon are known to be ruthless and cunning in their tactics.",
+            "health": 10,
+            "loot_chance": 0.5,
+            "loot": "Kazon Weapons",
+            "damage_resistance_multiplier": 1.5,
+            "attack_multiplier": 1.2
         },
         {
             "enemyType": "8472",
-            "name": "Species 8472 Bio-Ship",
-            "description": "Species 8472 is a race of highly advanced and technologically advanced beings, hailing from a parallel dimension. They are known for their hostility towards other races and their highly advanced biological ships. The Species 8472 Bio-Ship is a formidable opponent, with advanced weapons and shielding systems, as well as the ability to adapt to almost any threat. It is a formidable opponent in combat, and should be approached with caution.",
-            "health": 25,
+            "name": "species 8472",
+            "description": "Species 8472 is a highly advanced, extra-dimensional alien species that poses a significant threat to the safety of the galaxy. They are known for their powerful biotechnology, which allows them to adapt to any environment and effectively counter any attack. The Borg have attempted to assimilate them on multiple occasions, but have always been unsuccessful due to their advanced resistance to assimilation. They are highly aggressive and will stop at nothing to protect their own interests.",
+            "health": 100,
             "loot_chance": 0.3,
-            "loot_type": "Money",
-            "damage_resistance_multiplier": 2,
-            "attack_multiplier": 1.5
+            "loot": "None",
+            "damage_resistance_multiplier": 1.5,
+            "attack_multiplier": 2.0
         }
     ],
     "mapSquares": [
         {
-        "coordinates": [
-        0,
-        0
-        ],
-        "description": "The Borg Cube: A massive, cube-shaped starship, home to the cybernetic race known as the Borg. The Borg are a formidable enemy, known for their ability to assimilate other species into their collective and adapt to any threat. The Cube is heavily fortified and well-defended, making it a challenging target for any would-be attackers.",
-        "chanceOfEnemies": 0.5,
-        "enemyType": "Borg",
-        "chanceOfLoot": 0.1,
-        "lootType": "Money"
+            "coordinates": [
+                0,
+                0
+            ],
+            "description": "An abandoned Borg cube, its once sleek and intimidating exterior now showing signs of wear and damage. The familiar hum of the Borg's technology can still be heard, but it is faint and intermittent. As you cautiously enter the cube, you are met with the eerie silence of a once bustling ship. The corridors and chambers are empty, but remnants of the Borg's technology can still be found scattered throughout the ship. It's unclear what caused the Borg's abandonment of this vessel, but it is clear that it is now a shell of its former self.",
+            "chanceOfEnemies": 0.5,
+            "chanceOfLoot": 0.1,
+            "enemyType": "Borg",
+            "lootName": "Federation Credits",
+            "lootAmount": 10,
+            "lootType": "money",
+            "requiredKey": "default"
         },
         {
-        "coordinates": [
-        0,
-        1
-        ],
-        "description": "Kazon-Ogla Territory: The Kazon-Ogla are a violent and aggressive species, known for their territorial disputes and raids on other civilizations. Their territory is marked by the presence of numerous warships and armed outposts, making it a dangerous place to venture",
-        "chanceOfEnemies": 0.7,
-        "enemyType": "Kazon",
-        "chanceOfLoot": 0.2,
-        "lootType": "Health"
+            "coordinates": [
+                0,
+                1
+            ],
+            "description": "Open space",
+            "chanceOfEnemies": 1,
+            "chanceOfLoot": 0.5,
+            "enemyType": "Goblin",
+            "lootName": "Apple",
+            "lootAmount": 1,
+            "lootType": "health",
+            "requiredKey": "default"
         },
         {
-        "coordinates": [
-        1,
-        0
-        ],
-        "description": "Fluidic Space: A chaotic and dangerous realm, filled with swirling energies and deadly creatures. Fluidic Space is the realm inhabited by the powerful and enigmatic species known as Species 8472. It is a vast and interconnected network of gas and fluid-filled dimensions, filled with strange and dangerous life forms. It is a place of great danger, and only the bravest of explorers dare venture into its depths.",
-        "chanceOfEnemies": 0.9,
-        "enemyType": "8472",
-        "chanceOfLoot": 0.3,
-        "lootType": "Armour"
+            "coordinates": [
+                0,
+                2
+            ],
+            "description": "A swirling nebula fills the area, making it difficult to see. The glowing gases create an ethereal atmosphere, but danger lurks within as there is a low chance of encountering a species 8472.",
+            "chanceOfEnemies": 0.1,
+            "chanceOfLoot": 0.1,
+            "enemyType": "8472",
+            "lootName": "Gold-Pressed Latinum",
+            "lootAmount": 1,
+            "lootType": "money",
+            "requiredKey": "default"
         },
         {
-        "coordinates": [
-        1,
-        1
-        ],
-        "description": "The Quiet Nebula is a peaceful and serene area, with gentle clouds of gas and dust drifting lazily through the void. To the South lies the treacherous Kazon-Ogla territory, where the aggressive Kazon clans roam and fight amongst themselves. To the south-west an abandoned Borg Cube. To the west is is the mysterious realm of Fluidic Space, home to the enigmatic 8472 species and their strange, otherworldly biology. Despite its peaceful atmosphere, the Quiet Nebula is not without danger, as powerful forces are always at play in the depths of space.",
-        "chanceOfEnemies": 0.0,
-        "enemyType": "None",
-        "chanceOfLoot": 0.0,
-        "lootType": "None"
+            "coordinates": [
+                1,
+                0
+            ],
+            "description": "A Kazon planet, known for their aggression and hostility towards other species",
+            "chanceOfEnemies": 0.9,
+            "chanceOfLoot": 0.5,
+            "enemyType": "Kazon",
+            "lootName": "Hypospray",
+            "lootAmount": 1,
+            "lootType": "health",
+            "requiredKey": "default"
+        },
+        {
+            "coordinates": [
+                1,
+                1
+            ],
+            "description": "An apparently abandoned Kazon ship floating in space. You can see the damage from blaster fire on the exterior of the ship. As you approach, you can hear the faint hum of the ship's systems still active. You carefully make your way inside, your weapon at the ready. The corridors are empty, but you can feel the presence of the Kazon who were once on board. You search the ship and find the Access Card, a valuable item that will allow you to enter restricted areas.",
+            "chanceOfEnemies": 1,
+            "chanceOfLoot": 1,
+            "enemyType": "Kazon",
+            "lootName": "Access Card",
+            "lootAmount": 1,
+            "lootType": "key",
+            "requiredKey": "default"
+        },
+        {
+            "coordinates": [
+                1,
+                2
+            ],
+            "description": "A mysterious nebula fills the sky, swirling with all the colors of the rainbow. The gases and particles are so dense that they obscure most of the stars and celestial bodies, making navigation in this region treacherous. Strange energy readings and anomalies have been reported in this area, leading some to believe that it may be home to unknown life forms or hidden technologies.",
+            "chanceOfEnemies": 0.5,
+            "chanceOfLoot": 0.1,
+            "enemyType": "random",
+            "lootName": "random",
+            "lootAmount": 1,
+            "lootType": "health",
+            "requiredKey": "default"
+        },
+        {
+            "coordinates": [
+                2,
+                0
+            ],
+            "description": "An abandoned Federation shuttle sits on the surface of the planet. It looks like it has been there for some time, with the paint starting to fade and some parts showing signs of damage. You approach the shuttle and see that the door is slightly open, beckoning you to enter. As you step inside, you can see that the interior of the shuttle is in disarray, with equipment and supplies scattered across the floor. It looks like there was a struggle here at some point. You wonder what could have happened to the crew and what secrets the shuttle might hold.",
+            "chanceOfEnemies": 0,
+            "chanceOfLoot": 1,
+            "enemyType": "none",
+            "lootName": "Phaser Rifle",
+            "lootAmount": 1,
+            "lootType": "weapon",
+            "requiredKey": "Access Card"
+        },
+        {
+            "coordinates": [
+                2,
+                1
+            ],
+            "description": "A rift into fluidic space. You approach a strange, shimmering rift in the fabric of space. As you get closer, you can feel the energy emanating from it, pulsing with an otherworldly power. You hesitate for a moment, wondering if it would be wise to venture any closer. But your curiosity gets the better of you, and you decide to take a closer look. As you scan the rift, you see swirling currents of energy, swirling and churning in an endless dance.",
+            "chanceOfEnemies": 0.9,
+            "chanceOfLoot": 0.5,
+            "enemyType": "8472",
+            "lootName": "Gold-pressed latinum",
+            "lootAmount": 1,
+            "lootType": "money",
+            "requiredKey": "default"
+        },
+        {
+            "coordinates": [
+                2,
+                2
+            ],
+            "description": "The shipyard is bustling with activity as federation engineers and workers scurry about, repairing and constructing new ships. You see a variety of vessels in various stages of completion, from small shuttlecraft to massive starship hulls. Despite the hustle and bustle, the shipyard is eerily quiet, with only the sounds of welding and the occasional shouted instruction breaking the silence.",
+            "chanceOfEnemies": 0,
+            "chanceOfLoot": 1,
+            "enemyType": "None",
+            "lootName": "Hypospray",
+            "lootAmount": 1,
+            "lootType": "health",
+            "requiredKey": "default"
         }
-        ]
+    ]
 }
