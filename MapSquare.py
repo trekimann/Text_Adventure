@@ -31,7 +31,7 @@ class MapSquare:
             product = self.shop_items['stock'][item_name][item_name]
             print(f"   {tc.colour(product.item_colour)}{item_name}{tc.colour()} ({product.weight}kg each) x{self.shop_items['stock'][item_name]['stock']}")
             print(f"      Cost: {tc.colour('yellow')}{product.cost*int(self.shop_items['cost'])}{tc.colour()}")
-            if product.type == 'health' or 'armour':
+            if product.type in ('health', 'armour'):
                 print(f"      Recovers {tc.colour(product.item_colour)}{product.health_recovery}{tc.colour()} hit points")
             print(f"      {product.description}")
         while True:
@@ -59,7 +59,7 @@ class MapSquare:
                 break
 
     def sell_to_player(self, player, item_name, item_number):
-        
+
         pass
 
     def has_enemy(self):
