@@ -81,7 +81,7 @@ class Player(Character):
     if item_name not in self.inventory.keys():
         print("Item not in inventory.")
         return False
-    if self.inventory[item_name]['count'] < count:
+    if self.inventory[item_name]['count'] < int(count):
         print("Not enough of that item in inventory.")
         return False
 
@@ -138,16 +138,33 @@ class Player(Character):
           decision = input(f"Are you sure you want to permanently discard {item_name} x{item_number}? Yes or No: ")
           if decision.lower().startswith('y'):
             self.remove_from_inventory(item_name, item_number)
+      choice = input("Do wou want to use something? Yes or No: ")
+      if choice.lower().startswith('y'):
+        self.use_item()
 
   def use_item(self):
     fields = self.inventory.keys()
     print("What item do you want to use?")
-    for field, in fields:
-      print(f"    {field} x{self.inventory[field]['count']}")
+    for field in fields:
+      item = self.inventory[field]
+      print(f"    {tc.colour(item['item'].item_colour)}{field}{tc.colour()} x{item['count']}")
     print("---------------")
     choice = input("Enter Selection: ")
     if choice in fields:
+      item = self.inventory[choice]['item']
+      if item.type == "weapon":
+        self.equip_weapon(item)
+      elif item.type == "health":
+        self.use_health_item(item)
       print("---------------")
+
+  def use_health_item(self, item):
+    self.health += item.health_recovery
+    self.inventory[item.name]['count'] -= 1
+    if self.inventory[item.name]['count'] == 0:
+      print(f"All {tc.colour(item.item_colour)}{item.name}{tc.colour()} used")
+      del self.inventory[item.name]
+    print(f"{tc.colour(item.item_colour)}{item.name}{tc.colour()} used. Health recovered by {item.health_recovery}.")
 
   def get_location(self):
     # return the current location of the player
