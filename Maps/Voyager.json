@@ -52,14 +52,14 @@
         {
             "itemType": "health",
             "name": "Hypospray",
-            "healthRecovery": 5,
+            "healthRecovery": 10,
             "description": "A hypospray used to administer medical treatments and medications",
             "equippable": false,
             "equipped": false,
             "colour": "green",
             "weight": 0.1,
-            "value": 10,
-            "cost": 100,
+            "value": 5,
+            "cost": 10,
             "multiplier": 0
         },
         {
@@ -67,8 +67,8 @@
             "name": "Tactical Vest",
             "description": "A lightweight vest made of advanced materials that provides protection against bullets and other forms of damage.",
             "weight": 1,
-            "value": 100,
-            "cost": 1000,
+            "value": 25,
+            "cost": 50,
             "multiplier": 0,
             "equippable": true,
             "equipped": false,

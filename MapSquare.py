@@ -34,8 +34,33 @@ class MapSquare:
             if product.type == 'health' or 'armour':
                 print(f"      Recovers {tc.colour(product.item_colour)}{product.health_recovery}{tc.colour()} hit points")
             print(f"      {product.description}")
-            print("   ------")
+        while True:
+            print(f"Do you want to buy something?")
+            choice = input("Yes or No: ")
+            if choice.lower().startswith('y'):
+                item_name = input("Enter the item name: ")
+                item_number = int(input("How many do you want to buy?: "))
+                # check total cost and if the player has that much money
+                if item_name in self.shop_items['stock'].keys():
+                    product = self.shop_items['stock'][item_name][item_name]
+                    if item_number <= int(self.shop_items['stock'][item_name]['stock']):
+                        total = product.cost * item_number
+                        if total < player.wallet_value():                            
+                            self.sell_to_player(player, item_name, item_number)
+                            break
+                        else:
+                            print(f"You have {player.wallet_value()}, you need {total} for this transaction")
+                    else:
+                        print(f"There are not enough {item_name} to buy")
+                else:
+                    print("Product not recognised, please try again.")        
+                print("   ------")
+            else:
+                break
 
+    def sell_to_player(self, player, item_name, item_number):
+        
+        pass
 
     def has_enemy(self):
         enemy_encounter = random.random() < self.enemy_chance

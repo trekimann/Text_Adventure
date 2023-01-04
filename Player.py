@@ -142,6 +142,13 @@ class Player(Character):
       if choice.lower().startswith('y'):
         self.use_item()
 
+  def wallet_value(self):
+    money_value = 0
+    for money_type in self.money:
+      money = self.money[money_type]['item']
+      money_value += money.value * self.money[money_type]['count']
+    return money_value
+
   def use_item(self):
     fields = self.inventory.keys()
     print("What item do you want to use?")
