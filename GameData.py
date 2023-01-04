@@ -51,6 +51,14 @@ class GameData:
                 )
               self.item_options[loot.name] = loot
 
+            # Shop Options
+            store_options = {}
+            for shopItems in data["storeItems"]:
+              stock = {}
+              for item, value in shopItems['shopItems'].items():
+                stock[item] = {item: self.item_options[item], "stock": value}
+              store_options[shopItems['shopID']] = {"stock": stock, "cost": shopItems['shopCost']}
+
             # Enemy Options
             for enemy_options in data["enemies"]:
               enemy = Enemy(
@@ -74,8 +82,12 @@ class GameData:
                     loot=self.item_options[square_data['lootName']],
                     loot_amount=square_data['lootAmount'],
                     enemy_options=self.enemy_options[square_data['enemyType']],
-                    key=square_data['requiredKey']
+                    key=square_data['requiredKey'],
+                    shop_ID=square_data['shopID']
                 )
+                if square.shop_ID !=0:
+                  square.shop_items = store_options[square.shop_ID]
+                
                 self.map_data['map_squares'][(square_data['coordinates'][0], square_data['coordinates'][1])] = square
 
         print("Data Loaded")

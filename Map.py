@@ -51,10 +51,13 @@ class Map:
         battle = Battle(player = player, enemy = enemy)
         if battle.start():
           location.enemy_killed()
-      else:
-        print("Nothing to fight")
-
       location.loot_location(player)
+
+      if location.has_shop():
+        print(f"There is a shop here. Do you want to use it?")
+        choice = input("Yes or No?: ")
+        if choice.lower().startswith('y'):
+          location.use_shop(player)
       
     def try_to_move(self, direction, x, y):
       # try to move the player in this direction.
@@ -77,6 +80,9 @@ class Map:
       print("---------------")
       if self.viable_grid(x,y):
         # show the description of the grid
-        print(self.get_location(x,y).description)
+        mapSquare = self.get_location(x,y)
+        print(mapSquare.description)
+        if mapSquare.shop_ID != 0:
+          print(f"There is a {tc.colour('bright blue')}shop{tc.colour()} here.")
       else:
         print("That is not a valid grid")

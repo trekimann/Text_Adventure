@@ -56,11 +56,24 @@
             "description": "A hypospray used to administer medical treatments and medications",
             "equippable": false,
             "equipped": false,
-            "colour": "yellow",
+            "colour": "green",
             "weight": 0.1,
             "value": 10,
             "cost": 100,
             "multiplier": 0
+        },
+        {
+            "itemType": "armour",
+            "name": "Tactical Vest",
+            "description": "A lightweight vest made of advanced materials that provides protection against bullets and other forms of damage.",
+            "weight": 1,
+            "value": 100,
+            "cost": 1000,
+            "multiplier": 0,
+            "equippable": true,
+            "equipped": false,
+            "colour": "bright blue",
+            "healthRecovery": 15
         },
         {
             "itemType": "weapon",
@@ -90,6 +103,24 @@
             "equipped": false,
             "colour": "yellow",
             "healthRecovery": 0
+        }
+    ],
+    "storeItems": [
+        {
+            "shopID": 1,
+            "shopCost": 1,
+            "shopItems": {
+                "Tactical Vest": 10,
+                "Hypospray": 10
+            }
+        },
+        {
+            "shopID": 2,
+            "shopCost": 0.1,
+            "shopItems": {
+                "Tactical Vest": 100,
+                "Hypospray": 100
+            }
         }
     ],
     "enemies": [
@@ -148,7 +179,8 @@
             "lootName": "Federation Credits",
             "lootAmount": 10,
             "lootType": "money",
-            "requiredKey": "default"
+            "requiredKey": "default",
+            "shopID": 0
         },
         {
             "coordinates": [
@@ -162,7 +194,8 @@
             "lootName": "None",
             "lootAmount": 0,
             "lootType": "health",
-            "requiredKey": "default"
+            "requiredKey": "default",
+            "shopID": 2
         },
         {
             "coordinates": [
@@ -176,7 +209,8 @@
             "lootName": "Gold-Pressed Latinum",
             "lootAmount": 1,
             "lootType": "money",
-            "requiredKey": "default"
+            "requiredKey": "default",
+            "shopID": 0
         },
         {
             "coordinates": [
@@ -190,7 +224,8 @@
             "lootName": "Hypospray",
             "lootAmount": 1,
             "lootType": "health",
-            "requiredKey": "default"
+            "requiredKey": "default",
+            "shopID": 0
         },
         {
             "coordinates": [
@@ -204,7 +239,8 @@
             "lootName": "Access Card",
             "lootAmount": 1,
             "lootType": "key",
-            "requiredKey": "default"
+            "requiredKey": "default",
+            "shopID": 0
         },
         {
             "coordinates": [
@@ -218,7 +254,8 @@
             "lootName": "Federation Credits",
             "lootAmount": 1000,
             "lootType": "money",
-            "requiredKey": "default"
+            "requiredKey": "default",
+            "shopID": 0
         },
         {
             "coordinates": [
@@ -232,7 +269,8 @@
             "lootName": "Phaser Rifle",
             "lootAmount": 1,
             "lootType": "weapon",
-            "requiredKey": "Access Card"
+            "requiredKey": "Access Card",
+            "shopID": 0
         },
         {
             "coordinates": [
@@ -246,7 +284,8 @@
             "lootName": "Gold-Pressed Latinum",
             "lootAmount": 1,
             "lootType": "money",
-            "requiredKey": "default"
+            "requiredKey": "default",
+            "shopID": 0
         },
         {
             "coordinates": [
@@ -255,12 +294,13 @@
             ],
             "description": "The shipyard is bustling with activity as federation engineers and workers scurry about, repairing and constructing new ships. You see a variety of vessels in various stages of completion, from small shuttlecraft to massive starship hulls. Despite the hustle and bustle, the shipyard is eerily quiet, with only the sounds of welding and the occasional shouted instruction breaking the silence.",
             "chanceOfEnemies": 0,
-            "chanceOfLoot": 1,
+            "chanceOfLoot": 0.9,
             "enemyType": "None",
             "lootName": "Hypospray",
             "lootAmount": 1,
             "lootType": "health",
-            "requiredKey": "default"
+            "requiredKey": "default",
+            "shopID": 1
         }
     ]
 }

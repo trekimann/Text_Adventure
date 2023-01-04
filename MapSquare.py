@@ -3,9 +3,11 @@ from Item import Item
 
 from Player import Player
 
+from TextColour import TC
 
+tc = TC()
 class MapSquare:
-    def __init__(self, description, enemy_chance, loot_chance, enemy_type, enemy_options, loot: Item, loot_amount = 1, key = None):
+    def __init__(self, description, enemy_chance, loot_chance, enemy_type, enemy_options, loot: Item, loot_amount = 1, key = None, shop_ID = False, shop_items = None):
         self.description = description
         self.enemy_chance = enemy_chance
         self.loot_chance = loot_chance
@@ -15,6 +17,25 @@ class MapSquare:
         self.enemy_options = enemy_options
         self.dead_enemies = 0
         self.key = key
+        self.shop_ID = shop_ID
+        self.shop_items = shop_items
+
+    def has_shop(self):
+        return self.shop_ID != 0
+
+    def use_shop(self, player):
+        if self.shop_ID == 0:
+            return
+        print(f"The shop stocks the following:")
+        for item_name in self.shop_items['stock']:
+            product = self.shop_items['stock'][item_name][item_name]
+            print(f"   {tc.colour(product.item_colour)}{item_name}{tc.colour()} ({product.weight}kg each) x{self.shop_items['stock'][item_name]['stock']}")
+            print(f"      Cost: {tc.colour('yellow')}{product.cost*int(self.shop_items['cost'])}{tc.colour()}")
+            if product.type == 'health' or 'armour':
+                print(f"      Recovers {tc.colour(product.item_colour)}{product.health_recovery}{tc.colour()} hit points")
+            print(f"      {product.description}")
+            print("   ------")
+
 
     def has_enemy(self):
         enemy_encounter = random.random() < self.enemy_chance
@@ -26,7 +47,7 @@ class MapSquare:
             return False
         # Display the loot at the location
         self.loot.item_description()
-        print(f"X{self.loot_amount}")
+        print(f"x{self.loot_amount}")
         
         action_loop = True
         # Present the player a chance to see their inventory
