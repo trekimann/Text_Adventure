@@ -22,7 +22,7 @@ class GameData:
             self.player_data['starting_location']=(data['playerData']['startingX'],data['playerData']['startingY'])
             # Loot options
             for loot_options in data['items']:
-              if loot_options['itemType'] != "weapon":
+              if loot_options['itemType'] in ("health", 'armour', 'key', 'treasure', 'money', 'None'):
                 loot = Item(
                   name = loot_options['name'],
                   weight= loot_options['weight'],
@@ -34,7 +34,7 @@ class GameData:
                   item_colour=loot_options['colour'],
                   type=loot_options['itemType'],
                   cost=loot_options['cost'])
-              else:
+              elif loot_options['itemType'] == 'weapon':
                 loot = Weapon(
                 name = loot_options['name'],
                 weight= loot_options['weight'],
@@ -49,6 +49,8 @@ class GameData:
                 damage_range=(loot_options['damageRangeMin'],loot_options['damageRangeMax']),
                 damage_modifier=loot_options['damageModifier']
                 )
+              if loot.type == 'money':
+                money = loot
               self.item_options[loot.name] = loot
 
             # Shop Options
@@ -84,7 +86,8 @@ class GameData:
                     loot_amount=square_data['lootAmount'],
                     enemy_options=self.enemy_options[square_data['enemyType']],
                     key=square_data['requiredKey'],
-                    shop_ID=square_data['shopID']
+                    shop_ID=square_data['shopID'],
+                    money_option=money
                 )
                 if square.shop_ID !=0:
                   square.shop_items = store_options[square.shop_ID]

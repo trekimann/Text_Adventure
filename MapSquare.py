@@ -7,7 +7,7 @@ from TextColour import TC
 
 tc = TC()
 class MapSquare:
-    def __init__(self, description, enemy_chance, loot_chance, enemy_type, enemy_options, loot: Item, loot_amount = 1, key = None, shop_ID = False, shop_items = None):
+    def __init__(self, description, enemy_chance, loot_chance, enemy_type, enemy_options, loot: Item, loot_amount = 1, key = None, shop_ID = False, shop_items = None, money_option = None,):
         self.description = description
         self.enemy_chance = enemy_chance
         self.loot_chance = loot_chance
@@ -19,6 +19,7 @@ class MapSquare:
         self.key = key
         self.shop_ID = shop_ID
         self.shop_items = shop_items
+        self.base_money_option = money_option
 
     def has_shop(self):
         return self.shop_ID != 0
@@ -64,11 +65,36 @@ class MapSquare:
                     break
 
     def buy_from_player(self, player):
-        pass
+        player.display_inventory()
+        while True:
+            item_name = input("Enter the item name: ")
+            item_number = int(input("How many do you want to sell?: "))
+            if item_name in player.inventory.keys():
+                product = player.inventory[item_name]['item']
+                if int(player.inventory[item_name]['count']) <= item_number:
+                    # add item to the shops stock
+                    self.add_to_stock(product)
+                    # remove the item from the players inventory
+                    player.remove_from_inventory(product.name)
+                    # give the player some money
+                    for _ in range(product.value):
+                        player.add_money(self.base_money_option)
+                    break                    
+                else:
+                    print(f"You dont have {item_number} {tc.colour(product.item_colour)}{item_name}{tc.colour()} to sell")
+            else:
+                print("Product not recognised, please try again.")        
+            print("   ------")
+
+    def add_to_stock(self, product):
+        if product.name in self.shop_items['stock']:
+            self.shop_items['stock'][product.name]['stock'] += 1
+        else:
+            self.shop_items['stock'][product.name] = {product.name: product, 'stock': 1}   
 
     def sell_to_player(self, player, item_name, item_number):
         product = self.shop_items['stock'][item_name][item_name]
-        total_cost = product.cost * item_number
+        total_cost = (product.cost * self.shop_items['cost']) * item_number
         player.remove_money(total_cost)
         for _ in range(item_number):
             player.add_to_inventory(product)

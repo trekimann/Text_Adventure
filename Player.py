@@ -112,39 +112,42 @@ class Player(Character):
 
     return total_weight
 
+  def display_inventory(self):
+    print("Inventory:")
+    for item_name in self.inventory:
+        thing = self.inventory[item_name]['item']
+        print(f"   {tc.colour(thing.item_colour)}{item_name}{tc.colour()} ({thing.weight}kg each) x{self.inventory[thing.name]['count']}")
+        print(f"      "+thing.description)
+    print("Keys:")
+    for key_name in self.keys:
+      if key_name != "default":
+        key = self.keys[key_name]['key']
+        print(f"   {tc.colour(key.item_colour)}{key_name}{tc.colour()} ({key.weight}kg each) x{self.keys[key.name]['count']}")
+        print("      "+key.description)
+    print("Money:")
+    money_value = 0
+    for money_type in self.money:
+      money = self.money[money_type]['item']
+      print(f"   {tc.colour(money.item_colour)}{money_type}{tc.colour()} ({money.weight}kg each) x{self.money[money_type]['count']}")
+      print("      "+money.description)
+      money_value += money.value * self.money[money_type]['count']
+    print(f"Money total value: {money_value}")
+    print(f"Equipped weapon: {tc.colour(self.weapon.item_colour)}{self.weapon.name}{tc.colour()}")
+    print(f"{self.name} inventory weight: {self.get_inventory_weight()}/{self.max_inventory_weight}")
+
   def check_inventory(self):
-      print("Inventory:")
-      for item_name in self.inventory:
-          thing = self.inventory[item_name]['item']
-          print(f"   {tc.colour(thing.item_colour)}{item_name}{tc.colour()} ({thing.weight}kg each) x{self.inventory[thing.name]['count']}")
-          print(f"      "+thing.description)
-      print("Keys:")
-      for key_name in self.keys:
-        if key_name != "default":
-          key = self.keys[key_name]['key']
-          print(f"   {tc.colour(key.item_colour)}{key_name}{tc.colour()} ({key.weight}kg each) x{self.keys[key.name]['count']}")
-          print("      "+key.description)
-      print("Money:")
-      money_value = 0
-      for money_type in self.money:
-        money = self.money[money_type]['item']
-        print(f"   {tc.colour(money.item_colour)}{money_type}{tc.colour()} ({money.weight}kg each) x{self.money[money_type]['count']}")
-        print("      "+money.description)
-        money_value += money.value * self.money[money_type]['count']
-      print(f"Money total value: {money_value}")
-      print(f"Equipped weapon: {tc.colour(self.weapon.item_colour)}{self.weapon.name}{tc.colour()}")
-      print(f"{self.name} inventory weight: {self.get_inventory_weight()}/{self.max_inventory_weight}")
-      print(f"Do you want to drop something?")
-      choice = input("Yes or No: ")
-      if choice.lower().startswith('y'):
-          item_name = input("Enter the item name: ")
-          item_number = input("How many do you want to drop?: ")
-          decision = input(f"Are you sure you want to permanently discard {item_name} x{item_number}? Yes or No: ")
-          if decision.lower().startswith('y'):
-            self.remove_from_inventory(item_name, item_number)
-      choice = input("Do wou want to use something? Yes or No: ")
-      if choice.lower().startswith('y'):
-        self.use_item()
+    self.display_inventory()
+    print(f"Do you want to drop something?")
+    choice = input("Yes or No: ")
+    if choice.lower().startswith('y'):
+        item_name = input("Enter the item name: ")
+        item_number = input("How many do you want to drop?: ")
+        decision = input(f"Are you sure you want to permanently discard {item_name} x{item_number}? Yes or No: ")
+        if decision.lower().startswith('y'):
+          self.remove_from_inventory(item_name, item_number)
+    choice = input("Do ou want to use something? Yes or No: ")
+    if choice.lower().startswith('y'):
+      self.use_item()
 
   def wallet_value(self):
     money_value = 0

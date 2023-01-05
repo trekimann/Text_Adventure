@@ -32,7 +32,7 @@ class Enemy(Character):
             print(f"{self.name} dropped loot!")
             return self.loot, self.loot_amount
         else:
-            return None
+            return None, 0
 
     def reset(self):
         self.health = self.initial_health
