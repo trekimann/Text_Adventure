@@ -19,8 +19,9 @@ class Battle:
                 return False
             elif self.enemy.is_dead():
                 print(f"{self.enemy.name} has been defeated!")
-                loot = self.enemy.drop_loot()
-                self.player.add_to_inventory(loot)
+                loot, loot_amount = self.enemy.drop_loot()
+                for _ in range(loot_amount):
+                    self.player.add_to_inventory(loot)
                 self.player.enemy_killed(self.enemy)
                 return True
 
@@ -38,17 +39,7 @@ class Battle:
                 self.combat()
             elif choice == "2":
                 # Get a list of items in the player's inventory
-                items = []
-                for i, item in enumerate(self.player.inventory):
-                    items.append(f"{i+1}. {item.name}")
-                # Print the list of items
-                print("Which item do you want to use?")
-                for item in items:
-                    print(item)
-                # Get the player's choice
-                choice = input("Enter choice: ")
-                # Use the item
-                self.player.use_item(self.player.inventory[int(choice)-1])
+                self.player.use_item()
             elif choice == "3":
                 # Roll a random number between 0 and 1
                 if random.uniform(0, 1) < 0.5:

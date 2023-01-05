@@ -30,7 +30,7 @@ class MapSquare:
         for item_name in self.shop_items['stock']:
             product = self.shop_items['stock'][item_name][item_name]
             print(f"   {tc.colour(product.item_colour)}{item_name}{tc.colour()} ({product.weight}kg each) x{self.shop_items['stock'][item_name]['stock']}")
-            print(f"      Cost: {tc.colour('yellow')}{product.cost*int(self.shop_items['cost'])}{tc.colour()}")
+            print(f"      Cost: {tc.colour('yellow')}{product.cost*self.shop_items['cost']}{tc.colour()}")
             if product.type in ('health', 'armour'):
                 print(f"      Recovers {tc.colour(product.item_colour)}{product.health_recovery}{tc.colour()} hit points")
             print(f"      {product.description}")
@@ -44,8 +44,8 @@ class MapSquare:
                 if item_name in self.shop_items['stock'].keys():
                     product = self.shop_items['stock'][item_name][item_name]
                     if item_number <= int(self.shop_items['stock'][item_name]['stock']):
-                        total = product.cost * item_number
-                        if total < player.wallet_value():                            
+                        total = (product.cost * self.shop_items['cost']) * item_number
+                        if player.wallet_value() >= total:                            
                             self.sell_to_player(player, item_name, item_number)
                             break
                         else:
@@ -64,13 +64,13 @@ class MapSquare:
                     break
 
     def buy_from_player(self, player):
-        
+        pass
 
     def sell_to_player(self, player, item_name, item_number):
         product = self.shop_items['stock'][item_name][item_name]
         total_cost = product.cost * item_number
         player.remove_money(total_cost)
-        for _ in item_number:
+        for _ in range(item_number):
             player.add_to_inventory(product)
         self.shop_items['stock'][item_name]['stock'] -= item_number
         if self.shop_items['stock'][item_name]['stock'] == 0:

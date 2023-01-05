@@ -24,7 +24,7 @@
             "colour": "yellow"
         },
         {
-            "itemType": "money",
+            "itemType": "treasure",
             "name": "Gold-Pressed Latinum",
             "description": "A highly valuable currency used by many species throughout the Alpha Quadrant, particularly the Ferengi Alliance. Latinum is typically stored in small, shiny bars or slips, and is prized for its rarity and inherent value.",
             "weight": 1,
@@ -132,6 +132,7 @@
             "loot_chance": 0,
             "loot_type": "",
             "loot": "None",
+            "lootAmount": 0,
             "damage_resistance_multiplier": 0.1,
             "attack_multiplier": 0.1
         },
@@ -142,6 +143,7 @@
             "health": 50,
             "loot_chance": 0.3,
             "loot": "Federation Credits",
+            "lootAmount": 100,
             "damage_resistance_multiplier": 1.5,
             "attack_multiplier": 1.5
         },
@@ -150,8 +152,9 @@
             "name": "Kazon Raider",
             "description": "The Kazon are a warlike, faction-based species native to the Delta Quadrant. They are known for their aggressive expansionist policies, frequently attacking and pillaging other civilizations for resources. The Kazon are a formidable opponent in combat. The Kazon are known to be ruthless and cunning in their tactics.",
             "health": 10,
-            "loot_chance": 0.5,
+            "loot_chance": 0.9,
             "loot": "Federation Credits",
+            "lootAmount": 10,
             "damage_resistance_multiplier": 1.5,
             "attack_multiplier": 1.2
         },
@@ -161,6 +164,7 @@
             "description": "Species 8472 is a highly advanced, extra-dimensional alien species that poses a significant threat to the safety of the galaxy. They are known for their powerful biotechnology, which allows them to adapt to any environment and effectively counter any attack. The Borg have attempted to assimilate them on multiple occasions, but have always been unsuccessful due to their advanced resistance to assimilation. They are highly aggressive and will stop at nothing to protect their own interests.",
             "health": 100,
             "loot_chance": 1,
+            "lootAmount": 2,
             "loot": "Gold-Pressed Latinum",
             "damage_resistance_multiplier": 1.5,
             "attack_multiplier": 2.0

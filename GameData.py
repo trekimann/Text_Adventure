@@ -69,7 +69,8 @@ class GameData:
                 loot_chance = enemy_options['loot_chance'],
                 loot = self.item_options[enemy_options['loot']],
                 damage_resistance_multiplier = enemy_options['damage_resistance_multiplier'],
-                attack_multiplier = enemy_options['attack_multiplier']
+                attack_multiplier = enemy_options['attack_multiplier'],
+                loot_amount = enemy_options['lootAmount']
               )
               self.enemy_options[enemy.enemy_type]=enemy
             # map grid details
