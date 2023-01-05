@@ -53,8 +53,7 @@ class Player(Character):
 
     # Check if its a key
     if item.type == "key":
-      self.collect_key(item)
-      return
+      return self.collect_key(item)
     elif item.type == "weapon":
       self.equip_weapon(item)
     elif item.type == "money":
@@ -78,9 +77,7 @@ class Player(Character):
     return True
 
   def remove_money(self, amount):
-    # Work out if the total cost can be covered by the larger denominations
-    # If it can, remove n number of those to cover the costs and make up the difference with the smaller denominations
-    # If it can't see if the smaller denominations can completely cover it.
+    
     pass
 
   def remove_from_inventory(self, item_name, count=1):
@@ -103,6 +100,7 @@ class Player(Character):
       self.keys[key.name]['count'] +=1
     else:
       self.keys[key.name]={"key": key, "count": 1}
+    return True
 
   def get_inventory_weight(self):
     # Calculate total weight of items in inventory
@@ -169,7 +167,17 @@ class Player(Character):
         self.equip_weapon(item)
       elif item.type == "health":
         self.use_health_item(item)
+      elif item.type == "armour":
+        self.use_armour_item(item)
       print("---------------")
+
+  def use_armour_item(self, item):
+    self.armour += item.health_recovery
+    self.inventory[item.name]['count'] -= 1
+    if self.inventory[item.name]['count'] == 0:
+      print(f"All {tc.colour(item.item_colour)}{item.name}{tc.colour()} used")
+      del self.inventory[item.name]
+    print(f"{tc.colour(item.item_colour)}{item.name}{tc.colour()} used. Armour recovered by {item.health_recovery}.")
 
   def use_health_item(self, item):
     self.health += item.health_recovery
