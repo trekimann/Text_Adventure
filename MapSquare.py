@@ -56,11 +56,27 @@ class MapSquare:
                     print("Product not recognised, please try again.")        
                 print("   ------")
             else:
-                break
+                print(f"Do you want to Sell something?")
+                choice = input("Yes or No: ")
+                if choice.lower().startswith('y'):
+                    self.buy_from_player(player)
+                else:
+                    break
+
+    def buy_from_player(self, player):
+        
 
     def sell_to_player(self, player, item_name, item_number):
+        product = self.shop_items['stock'][item_name][item_name]
+        total_cost = product.cost * item_number
+        player.remove_money(total_cost)
+        for _ in item_number:
+            player.add_to_inventory(product)
+        self.shop_items['stock'][item_name]['stock'] -= item_number
+        if self.shop_items['stock'][item_name]['stock'] == 0:
+            del self.shop_items['stock'][item_name]
+        print(f"You bought {item_number} {item_name} for {total_cost}")
 
-        pass
 
     def has_enemy(self):
         enemy_encounter = random.random() < self.enemy_chance

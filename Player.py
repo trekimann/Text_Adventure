@@ -77,6 +77,12 @@ class Player(Character):
       self.money[money.name] = {'item':money,'count':1}
     return True
 
+  def remove_money(self, amount):
+    # Work out if the total cost can be covered by the larger denominations
+    # If it can, remove n number of those to cover the costs and make up the difference with the smaller denominations
+    # If it can't see if the smaller denominations can completely cover it.
+    pass
+
   def remove_from_inventory(self, item_name, count=1):
     if item_name not in self.inventory.keys():
         print("Item not in inventory.")
