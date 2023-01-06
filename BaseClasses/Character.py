@@ -40,7 +40,11 @@ class Character:
         return self.is_dead()
           
     def equip_weapon(self, weapon: Weapon):
+        # un-equip the old weapon
+        if self.weapon is not None:
+            self.weapon.equipped = False
         self.weapon = weapon
+        weapon.equipped = True
 
     def is_dead(self):
         if self.health <= 0:
