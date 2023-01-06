@@ -2,7 +2,7 @@ import json
 
 from Enemy import Enemy
 from MapSquare import MapSquare
-from Item import Item
+from BaseClasses.Item import Item
 from Weapon import Weapon
 
 class GameData:
@@ -49,8 +49,8 @@ class GameData:
                 damage_range=(loot_options['damageRangeMin'],loot_options['damageRangeMax']),
                 damage_modifier=loot_options['damageModifier']
                 )
-              if loot.type == 'money':
-                money = loot
+              #if loot.type == 'money':
+              #  money = loot
               self.item_options[loot.name] = loot
 
             # Shop Options
@@ -87,11 +87,11 @@ class GameData:
                     enemy_options=self.enemy_options[square_data['enemyType']],
                     key=square_data['requiredKey'],
                     shop_ID=square_data['shopID'],
-                    money_option=money
+                    #money_option=money
                 )
                 if square.shop_ID !=0:
                   square.shop_items = store_options[square.shop_ID]
                 
                 self.map_data['map_squares'][(square_data['coordinates'][0], square_data['coordinates'][1])] = square
 
-        print("Data Loaded")
+        print("Game Data Loaded")

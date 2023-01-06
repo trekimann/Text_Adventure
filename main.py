@@ -1,5 +1,5 @@
 from MapSquare import MapSquare
-from Item import Item
+from BaseClasses.Item import Item
 from Player import Player
 from Map import Map
 from GameData import GameData

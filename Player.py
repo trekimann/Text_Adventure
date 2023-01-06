@@ -1,5 +1,5 @@
 from TextColour import TC
-from Item import Item
+from BaseClasses.Item import Item
 from BaseClasses.Character import Character
 
 tc= TC()
@@ -77,8 +77,31 @@ class Player(Character):
     return True
 
   def remove_money(self, amount):
+    # Sort the money in the player's inventory by value in descending order
+    sorted_money = sorted(self.money.items(), key=lambda x: x[1], reverse=True)
     
-    pass
+    # Initialize a counter for the total value of money removed
+    total_removed = 0
+    
+    # Iterate through the sorted money
+    for money_name, money_value in sorted_money:
+      if money_value > amount:
+        continue
+      # Calculate the number of this type of money needed to reach the desired amount
+      num_needed = (amount - total_removed) // money_value
+      # If there are enough of this type of money, remove them all
+      if num_needed <= self.money[money_name]:
+          total_removed += num_needed * money_value
+          self.money[money_name] -= num_needed
+      # If there are not enough of this type of money, remove as many as possible
+      else:
+          total_removed += self.money[money_name] * money_value
+          del self.money[money_name]
+      # If the desired amount has been reached, break out of the loop
+      if total_removed == amount:
+          break    
+    # Return the total value of money removed
+    return total_removed
 
   def remove_from_inventory(self, item_name, count=1):
     if item_name not in self.inventory.keys():

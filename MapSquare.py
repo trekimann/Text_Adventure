@@ -1,5 +1,5 @@
 import random
-from Item import Item
+from BaseClasses.Item import Item
 
 from Player import Player
 
@@ -7,7 +7,7 @@ from TextColour import TC
 
 tc = TC()
 class MapSquare:
-    def __init__(self, description, enemy_chance, loot_chance, enemy_type, enemy_options, loot: Item, loot_amount = 1, key = None, shop_ID = False, shop_items = None, money_option = None,):
+    def __init__(self, description, enemy_chance, loot_chance, enemy_type, enemy_options, loot: Item, loot_amount = 1, key = None, shop_ID = False, shop_items = None):#, money_option = None,):
         self.description = description
         self.enemy_chance = enemy_chance
         self.loot_chance = loot_chance
@@ -19,7 +19,7 @@ class MapSquare:
         self.key = key
         self.shop_ID = shop_ID
         self.shop_items = shop_items
-        self.base_money_option = money_option
+        #self.base_money_option = money_option
 
     def has_shop(self):
         return self.shop_ID != 0

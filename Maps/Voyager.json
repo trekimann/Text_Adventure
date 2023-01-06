@@ -50,6 +50,19 @@
             "healthRecovery": 0
         },
         {
+            "itemType": "money",
+            "name": "Klingon Talon",
+            "weight": 0.01,
+            "value": 10,
+            "cost": 10,
+            "multiplier": 0,
+            "description": "Standard currency used by the Klingon Empire",
+            "equippable": false,
+            "equipped": false,
+            "colour": "yellow",
+            "healthRecovery": 0
+        },
+        {
             "itemType": "health",
             "name": "Hypospray",
             "healthRecovery": 10,
