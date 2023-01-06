@@ -1,6 +1,7 @@
 from TextColour import TC
 from BaseClasses.Item import Item
 from BaseClasses.Character import Character
+from Wallet import Wallet
 
 tc= TC()
 
@@ -13,12 +14,12 @@ class Player(Character):
       armour = 10)
 
     self.inventory = {}
-    self.max_inventory_weight = 10
+    self.max_inventory_weight = 25
     self.current_location = current_location
     self.kills = 0
     self.bestiary = {}
     self.moves = max_moves
-    self.money = {}
+    self.wallet = Wallet()
     self.keys = {
       "default": {
         "key": Item("default", 0, 0, 0, "", "key", True, False),
@@ -69,47 +70,21 @@ class Player(Character):
     return True
   
   def add_money(self, money):
-      # Add item to inventory
-    if money.name in self.money.keys():
-      self.money[money.name]['count'] += 1
-    else:
-      self.money[money.name] = {'item':money,'count':1}
-    return True
-
-  def remove_money(self, amount):
-    # Sort the money in the player's inventory by value in descending order
-    sorted_money = sorted(self.money.items(), key=lambda x: x[1], reverse=True)
-    
-    # Initialize a counter for the total value of money removed
-    total_removed = 0
-    
-    # Iterate through the sorted money
-    for money_name, money_value in sorted_money:
-      if money_value > amount:
-        continue
-      # Calculate the number of this type of money needed to reach the desired amount
-      num_needed = (amount - total_removed) // money_value
-      # If there are enough of this type of money, remove them all
-      if num_needed <= self.money[money_name]:
-          total_removed += num_needed * money_value
-          self.money[money_name] -= num_needed
-      # If there are not enough of this type of money, remove as many as possible
-      else:
-          total_removed += self.money[money_name] * money_value
-          del self.money[money_name]
-      # If the desired amount has been reached, break out of the loop
-      if total_removed == amount:
-          break    
-    # Return the total value of money removed
-    return total_removed
+    return self.wallet.add_money(money)
 
   def remove_from_inventory(self, item_name, count=1):
+    count = int(count)
     if item_name not in self.inventory.keys():
         print("Item not in inventory.")
         return False
     if self.inventory[item_name]['count'] < int(count):
         print("Not enough of that item in inventory.")
         return False
+
+    item = self.inventory[item_name]['item']
+    if item.equipped:
+      print(f"You cant remove an equipped item")
+      return False
 
     self.inventory[item_name]['count'] -= count
     if self.inventory[item_name]['count'] == 0:
@@ -130,8 +105,7 @@ class Player(Character):
     total_weight = 0
     for item in self.inventory:
       total_weight += self.inventory[item]['item'].weight
-    for money in self.money:
-      total_weight += self.money[money]['item'].weight
+    total_weight += self.wallet.wallet_weight()
 
     return total_weight
 
@@ -148,13 +122,7 @@ class Player(Character):
         print(f"   {tc.colour(key.item_colour)}{key_name}{tc.colour()} ({key.weight}kg each) x{self.keys[key.name]['count']}")
         print("      "+key.description)
     print("Money:")
-    money_value = 0
-    for money_type in self.money:
-      money = self.money[money_type]['item']
-      print(f"   {tc.colour(money.item_colour)}{money_type}{tc.colour()} ({money.weight}kg each) x{self.money[money_type]['count']}")
-      print("      "+money.description)
-      money_value += money.value * self.money[money_type]['count']
-    print(f"Money total value: {money_value}")
+    self.wallet.flash_cash()
     print(f"Equipped weapon: {tc.colour(self.weapon.item_colour)}{self.weapon.name}{tc.colour()}")
     print(f"{self.name} inventory weight: {self.get_inventory_weight()}/{self.max_inventory_weight}")
 
@@ -168,16 +136,12 @@ class Player(Character):
         decision = input(f"Are you sure you want to permanently discard {item_name} x{item_number}? Yes or No: ")
         if decision.lower().startswith('y'):
           self.remove_from_inventory(item_name, item_number)
-    choice = input("Do ou want to use something? Yes or No: ")
+    choice = input("Do you want to use something? Yes or No: ")
     if choice.lower().startswith('y'):
       self.use_item()
 
   def wallet_value(self):
-    money_value = 0
-    for money_type in self.money:
-      money = self.money[money_type]['item']
-      money_value += money.value * self.money[money_type]['count']
-    return money_value
+    return self.wallet.wallet_value()
 
   def use_item(self):
     fields = self.inventory.keys()
@@ -187,23 +151,28 @@ class Player(Character):
       print(f"    {tc.colour(item['item'].item_colour)}{field}{tc.colour()} x{item['count']}")
     print("---------------")
     choice = input("Enter Selection: ")
+    amount = int(input("How many do you want to use?: "))
     if choice in fields:
       item = self.inventory[choice]['item']
-      if item.type == "weapon":
-        self.equip_weapon(item)
-      elif item.type == "health":
-        self.use_health_item(item)
-      elif item.type == "armour":
-        self.use_armour_item(item)
-      print("---------------")
+      if self.inventory[choice]['count'] >= amount:
+        for _ in range(amount):
+          if item.type == "weapon":
+            self.equip_weapon(item)
+          elif item.type == "health":
+            self.use_health_item(item)
+          elif item.type == "armour":
+            self.use_armour_item(item)
+        print("---------------")
+      else:
+        print(f"You only have {self.inventory[choice]['count']} of {choice}")
 
   def use_armour_item(self, item):
     self.armour += item.health_recovery
     self.inventory[item.name]['count'] -= 1
+    print(f"{tc.colour(item.item_colour)}{item.name}{tc.colour()} used. Armour recovered by {item.health_recovery}.")
     if self.inventory[item.name]['count'] == 0:
       print(f"All {tc.colour(item.item_colour)}{item.name}{tc.colour()} used")
       del self.inventory[item.name]
-    print(f"{tc.colour(item.item_colour)}{item.name}{tc.colour()} used. Armour recovered by {item.health_recovery}.")
 
   def use_health_item(self, item):
     self.health += item.health_recovery

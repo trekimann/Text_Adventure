@@ -38,7 +38,7 @@
         },
         {
             "itemType": "money",
-            "name": "Federation Credits",
+            "name": "Federation Credit",
             "weight": 0.01,
             "value": 1,
             "cost": 1,
@@ -125,6 +125,10 @@
             "shopItems": {
                 "Tactical Vest": 10,
                 "Hypospray": 10
+            },
+            "shopWallet":{
+                "Federation Credit": 1000,
+                "Klingon Talon": 1000
             }
         },
         {
@@ -133,6 +137,10 @@
             "shopItems": {
                 "Tactical Vest": 100,
                 "Hypospray": 100
+            },
+            "shopWallet":{
+                "Federation Credit": 10000,
+                "Klingon Talon": 10000
             }
         }
     ],
@@ -155,7 +163,7 @@
             "description": "A member of the Borg Collective, a race of cybernetic beings who seek to assimilate other species into their collective. The Borg Drone is a formidable opponent, with advanced technology and weapons at its disposal. Its organic and artificial parts are seamlessly integrated, making it immune to many forms of attack. The Borg's primary goal is to assimilate other species and technologies into the Collective, and they will stop at nothing to achieve this goal.",
             "health": 50,
             "loot_chance": 0.3,
-            "loot": "Federation Credits",
+            "loot": "Federation Credit",
             "lootAmount": 100,
             "damage_resistance_multiplier": 1.5,
             "attack_multiplier": 1.5
@@ -166,7 +174,7 @@
             "description": "The Kazon are a warlike, faction-based species native to the Delta Quadrant. They are known for their aggressive expansionist policies, frequently attacking and pillaging other civilizations for resources. The Kazon are a formidable opponent in combat. The Kazon are known to be ruthless and cunning in their tactics.",
             "health": 10,
             "loot_chance": 0.9,
-            "loot": "Federation Credits",
+            "loot": "Federation Credit",
             "lootAmount": 10,
             "damage_resistance_multiplier": 1.5,
             "attack_multiplier": 1.2
@@ -193,7 +201,7 @@
             "chanceOfEnemies": 0.5,
             "chanceOfLoot": 0.1,
             "enemyType": "Borg",
-            "lootName": "Federation Credits",
+            "lootName": "Federation Credit",
             "lootAmount": 10,
             "lootType": "money",
             "requiredKey": "default",
@@ -268,7 +276,7 @@
             "chanceOfEnemies": 0.5,
             "chanceOfLoot": 0.1,
             "enemyType": "Borg",
-            "lootName": "Federation Credits",
+            "lootName": "Federation Credit",
             "lootAmount": 1000,
             "lootType": "money",
             "requiredKey": "default",

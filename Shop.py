@@ -1,14 +1,15 @@
 from TextColour import TC
 from Player import Player
+from Wallet import Wallet
 
 tc = TC()
 
 class Shop:
-    def __init__(self, shop_items, cost_multiplier, shop_ID, currency_options):
+    def __init__(self, shop_items, cost_multiplier, shop_ID, wallet: Wallet):
         self.shop_items = shop_items
         self.cost_multiplier = cost_multiplier
         self.shop_ID = shop_ID
-        self.currency_options = currency_options
+        self.wallet = wallet
     
     def use_shop(self, player: Player):
         if self.shop_ID == 0:
@@ -17,7 +18,8 @@ class Shop:
         for item_name in self.shop_items.keys():
             product = self.shop_items[item_name][item_name]
             print(f"   {tc.colour(product.item_colour)}{item_name}{tc.colour()} ({product.weight}kg each) x{self.shop_items[item_name]['stock']}")
-            print(f"      Cost: {tc.colour('yellow')}{product.cost*self.cost_multiplier}{tc.colour()}")
+            print(f"      Cost each: {tc.colour('yellow')}{product.cost*self.cost_multiplier}{tc.colour()}")
+            print(f"      Paid each: {tc.colour('yellow')}{product.value}{tc.colour()}")
             if product.type in ('health', 'armour'):
                 print(f"      Recovers {tc.colour(product.item_colour)}{product.health_recovery}{tc.colour()} hit points")
             print(f"      {product.description}")
@@ -57,17 +59,26 @@ class Shop:
             item_number = int(input("How many do you want to sell?: "))
             if item_name in player.inventory.keys():
                 product = player.inventory[item_name]['item']
-                if int(player.inventory[item_name]['count']) <= item_number:
-                    # add item to the shops stock
-                    self.add_to_stock(product)
-                    # remove the item from the players inventory
-                    player.remove_from_inventory(product.name)
-                    # give the player some money
-                    for _ in range(product.value):
-                        THIS NEEDS SORTING TO CALCULATE HOW MUCH OF MAXIMUM MONY TO GIVE TO THE PLAYER player.add_money(self.base_money_option)
-                    break                    
+                if not product.equipped:
+                    if int(player.inventory[item_name]['count']) <= item_number:
+                        total_cost = (product.value) * item_number
+                        if self.wallet.wallet_value() >= total_cost:
+                            for _ in range(item_number):
+                                # add item to the shops stock
+                                self.add_to_stock(product)
+                                # remove the item from the players inventory
+                                player.remove_from_inventory(product.name)
+                                # give the player some money
+                                self.wallet.pay_money(product.value, player.wallet)
+                            player.wallet.flash_cash()
+                            break           
+                        else:
+                            print(f"Shop does not have enough funds to make the purchase")
+                    else:
+                        print(f"You dont have {item_number} {tc.colour(product.item_colour)}{item_name}{tc.colour()} to sell")
                 else:
-                    print(f"You dont have {item_number} {tc.colour(product.item_colour)}{item_name}{tc.colour()} to sell")
+                    print(f"You cant sell an Equipped Item")
+                    break         
             else:
                 print("Product not recognised, please try again.")        
             print("   ------")
@@ -78,10 +89,10 @@ class Shop:
         else:
             self.shop_items[product.name] = {product.name: product, 'stock': 1}   
 
-    def sell_to_player(self, player, item_name, item_number):
+    def sell_to_player(self, player: Player, item_name, item_number):
         product = self.shop_items[item_name][item_name]
         total_cost = (product.cost * self.cost_multiplier) * item_number
-        player.remove_money(total_cost)
+        player.wallet.pay_money(total_cost, self.wallet)
         for _ in range(item_number):
             player.add_to_inventory(product)
         self.shop_items[item_name]['stock'] -= item_number

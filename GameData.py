@@ -6,6 +6,7 @@ from BaseClasses.Item import Item
 from Money import Money
 from Shop import Shop
 from Weapon import Weapon
+from Wallet import Wallet
 
 class GameData:
     def __init__(self):
@@ -70,11 +71,14 @@ class GameData:
               stock = {}
               for item, value in shopItems['shopItems'].items():
                 stock[item] = {item: self.item_options[item], "stock": value}
+              wallet = Wallet()
+              for currency in shopItems['shopWallet']:
+                wallet.add_money(money[currency], shopItems['shopWallet'][currency])
               self.store_options[shopItems['shopID']] = Shop(
                 shop_items=stock,
                 cost_multiplier= shopItems['shopCost'],
                 shop_ID=shopItems['shopID'],
-                currency_options=money)
+                wallet=wallet)
 
             # Enemy Options
             for enemy_options in data["enemies"]:
