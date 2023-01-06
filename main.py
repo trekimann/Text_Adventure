@@ -67,7 +67,7 @@ class TextAdventureGame:
       elif action == "west":
         self.player_move(action)
       elif action == "location":
-        self.display_location()
+        self.display_location(True)
       elif action == "inventory":
         self.player.check_inventory()
       elif action == "stats":
@@ -99,7 +99,7 @@ class TextAdventureGame:
     print(self.print_break)
 
       
-  def display_location(self):
+  def display_location(self, from_instructions = False):
     # Get current location data
     x, y = self.player.get_location()
     location: MapSquare = self.current_map.get_location(x, y)
@@ -107,8 +107,11 @@ class TextAdventureGame:
     # Display location description
     print(f"Current Location: X:{x} Y:{y}")
     print(location.description)
-    if location.has_shop():
-      location.use_shop(self.player)
+    if location.has_shop() and from_instructions:
+      print(f"There is a shop here. Do you want to use it?")
+      choice = input("Yes or No?: ")
+      if choice.lower().startswith('y'):
+        location.use_shop(self.player)
     
   def display_options(self):
     print(f"Options:")
