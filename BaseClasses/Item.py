@@ -3,7 +3,7 @@ from TextColour import TC
 tc = TC()
 
 class Item:
-    def __init__(self, name, weight, health_recovery, value, description,type,equipped = False,equippable = False, item_colour="green", cost=0,):
+    def __init__(self, name, weight, value, description,type,equipped = False,equippable = False, item_colour="green", cost=0, health_recovery=0):
         self.name = name
         self.weight = weight
         self.health_recovery = health_recovery

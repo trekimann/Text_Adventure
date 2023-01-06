@@ -3,6 +3,8 @@ import json
 from Enemy import Enemy
 from MapSquare import MapSquare
 from BaseClasses.Item import Item
+from Money import Money
+from Shop import Shop
 from Weapon import Weapon
 
 class GameData:
@@ -12,17 +14,19 @@ class GameData:
         self.map_data = {}
         self.map_data['map_squares'] = {}
         self.item_options = {}
+        self.store_options = {}
     
     def load_from_json(self, filepath):
         with open(filepath, 'r') as f:
             data = json.load(f)
+            money = {}
             # Map details
             self.map_data['map_size'] = (data['size']['width'], data['size']['height'])
             # Player starting Details 
             self.player_data['starting_location']=(data['playerData']['startingX'],data['playerData']['startingY'])
             # Loot options
             for loot_options in data['items']:
-              if loot_options['itemType'] in ("health", 'armour', 'key', 'treasure', 'money', 'None'):
+              if loot_options['itemType'] in ("health", 'armour', 'key', 'treasure', 'None'):
                 loot = Item(
                   name = loot_options['name'],
                   weight= loot_options['weight'],
@@ -49,17 +53,28 @@ class GameData:
                 damage_range=(loot_options['damageRangeMin'],loot_options['damageRangeMax']),
                 damage_modifier=loot_options['damageModifier']
                 )
-              #if loot.type == 'money':
-              #  money = loot
+              elif loot_options['itemType'] == "money":
+                loot = Money(
+                  name = loot_options['name'],
+                  weight= loot_options['weight'],
+                  value=loot_options['value'],
+                  description=loot_options['description'],
+                )
+              if loot.type == 'money':
+                money[loot.name] = loot
               self.item_options[loot.name] = loot
 
             # Shop Options
-            store_options = {}
+            
             for shopItems in data["storeItems"]:
               stock = {}
               for item, value in shopItems['shopItems'].items():
                 stock[item] = {item: self.item_options[item], "stock": value}
-              store_options[shopItems['shopID']] = {"stock": stock, "cost": shopItems['shopCost']}
+              self.store_options[shopItems['shopID']] = Shop(
+                shop_items=stock,
+                cost_multiplier= shopItems['shopCost'],
+                shop_ID=shopItems['shopID'],
+                currency_options=money)
 
             # Enemy Options
             for enemy_options in data["enemies"]:
@@ -87,10 +102,9 @@ class GameData:
                     enemy_options=self.enemy_options[square_data['enemyType']],
                     key=square_data['requiredKey'],
                     shop_ID=square_data['shopID'],
-                    #money_option=money
                 )
                 if square.shop_ID !=0:
-                  square.shop_items = store_options[square.shop_ID]
+                  square.shop = self.store_options[square.shop_ID]
                 
                 self.map_data['map_squares'][(square_data['coordinates'][0], square_data['coordinates'][1])] = square
 
