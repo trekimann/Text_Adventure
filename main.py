@@ -102,11 +102,13 @@ class TextAdventureGame:
   def display_location(self):
     # Get current location data
     x, y = self.player.get_location()
-    location = self.current_map.get_location(x, y)
+    location: MapSquare = self.current_map.get_location(x, y)
     
     # Display location description
     print(f"Current Location: X:{x} Y:{y}")
     print(location.description)
+    if location.has_shop():
+      location.use_shop(self.player)
     
   def display_options(self):
     print(f"Options:")
