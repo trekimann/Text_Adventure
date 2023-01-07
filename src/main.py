@@ -18,7 +18,7 @@ class TextAdventureGame:
 
     # Load game Data
     map_choice = input("Pick a map: ")
-    game_json = "./Maps/"+map_choice+".json"
+    game_json = "src/Maps/"+map_choice+".json"
     self.game_data = GameData()
     self.game_data.load_from_json(game_json)
 
