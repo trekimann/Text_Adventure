@@ -101,3 +101,19 @@ def test_when_player_adds_to_inventory_and_item_is_type_money_then_add_money_is_
     with mock.patch.object(player, 'add_money') as mock_add_money:
         player.add_to_inventory(loot)
         mock_add_money.assert_called_once()
+
+@pytest.mark.test
+def test_when_player_adds_item_to_inventory_which_was_already_there_the_count_increases_by_one(setup):
+    player, loot = setup
+    # Test that the player's inventory is updated when the item is not None
+    player.add_to_inventory(loot)
+    player.add_to_inventory(loot)
+    assert player.inventory[loot.name]['count'] == 2
+
+@pytest.mark.test
+def test_when_player_collects_key_then_key_is_added_to_keys(setup):
+    player, loot = setup
+    loot.type = "key"
+    # Test that the player's keys are updated when they collect a key
+    player.collect_key(loot)
+    assert loot.name in player.keys
