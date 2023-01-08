@@ -13,16 +13,16 @@ class Shop:
     def use_shop(self, player: src.Player):
         if self.shop_ID == 0:
             return
-        print(f"The shop stocks the following:")
-        for item_name in self.shop_items.keys():
-            product = self.shop_items[item_name][item_name]
-            print(f"   {tc.colour(product.item_colour)}{item_name}{tc.colour()} ({product.weight}kg each) x{self.shop_items[item_name]['stock']}")
-            print(f"      Cost each: {tc.colour('yellow')}{product.cost*self.cost_multiplier}{tc.colour()}")
-            print(f"      Paid each: {tc.colour('yellow')}{product.value}{tc.colour()}")
-            if product.type in ('health', 'armour'):
-                print(f"      Recovers {tc.colour(product.item_colour)}{product.health_recovery}{tc.colour()} hit points")
-            print(f"      {product.description}")
         while True:
+            print(f"The shop stocks the following:")
+            for item_name in self.shop_items.keys():
+                product = self.shop_items[item_name][item_name]
+                print(f"   {tc.colour(product.item_colour)}{item_name}{tc.colour()} ({product.weight}kg each) x{self.shop_items[item_name]['stock']}")
+                print(f"      Cost each: {tc.colour('yellow')}{product.cost*self.cost_multiplier}{tc.colour()}")
+                print(f"      Paid each: {tc.colour('yellow')}{product.value}{tc.colour()}")
+                if product.type in ('health', 'armour'):
+                    print(f"      Recovers {tc.colour(product.item_colour)}{product.health_recovery}{tc.colour()} hit points")
+            print(f"      {product.description}")
             print(f"Do you want to buy something?")
             choice = input("Yes or No: ")
             if choice.lower().startswith('y'):

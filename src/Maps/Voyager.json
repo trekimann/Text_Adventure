@@ -27,7 +27,7 @@
             "colour": "yellow"
         },
         {
-            "itemType": "treasure",
+            "itemType": "money",
             "name": "Gold-Pressed Latinum",
             "description": "A highly valuable currency used by many species throughout the Alpha Quadrant, particularly the Ferengi Alliance. Latinum is typically stored in small, shiny bars or slips, and is prized for its rarity and inherent value.",
             "weight": 1,
