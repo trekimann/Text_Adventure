@@ -134,8 +134,6 @@ class TextAdventureGame:
         self.player.move_location(new_x, new_y)
         self.current_map.check_encounters(new_x, new_y, self.player)
 
-    
-    
 
 # Start the game
 game = TextAdventureGame()
