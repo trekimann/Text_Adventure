@@ -77,6 +77,7 @@ class Wallet:
         if total_paid != amount:
             #get the smallest denomination which would cover the remaining amount and get change for it from the other wallet, then pay the rest of the amount
             remaining_amount = amount - total_paid
+            sorted_money.reverse()
             for currency in sorted_money:
                 money = currency[1]['item']
                 money_value = self.money[money.name]['item'].value

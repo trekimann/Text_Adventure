@@ -48,16 +48,21 @@ def test_give_change_breaks_up_change_into_coins(setup):
 @pytest.mark.test
 def test_my_wallet_has_not_enough_small_denominations_so_pay_money_invokes_give_change(setup):
     my_wallet, value_of_1, value_of_5, value_of_10 = setup
+    value_of_20 = src.Money('Twenty Pound Note', 0.1, 20, 'A 20 pound note')
     wallet_2 = src.Wallet()
     wallet_2.add_money(value_of_1,10)
+    wallet_2.add_money(value_of_20)
 
     my_wallet.remove_money(value_of_1, 10)
     my_wallet.remove_money(value_of_5, 10)
+    my_wallet.add_money(value_of_20, 1)
     my_wallet.pay_money(5, wallet_2)
 
     assert my_wallet.money[value_of_10.name]['count'] == 9
     assert my_wallet.money[value_of_1.name]['count'] == 5
+    assert my_wallet.money[value_of_20.name]['count'] == 1
 
     assert wallet_2.money[value_of_10.name]['count'] == 1
     assert wallet_2.money[value_of_1.name]['count'] == 5
-    assert len(wallet_2.money) == 2
+    assert wallet_2.money[value_of_20.name]['count'] == 1
+    assert len(wallet_2.money) == 3
