@@ -24,7 +24,7 @@ def test_loot_location_with_empty_inventory(setup):
     assert map_square.loot_amount == 0
 
 @pytest.mark.test
-def test_loot_location_with_full_inventory(setup):
+def test_loot_location_with_full_inventory(setup, capsys):
     player, loot, map_square = setup
     # Test looting with a full inventory
     for _ in range(player.max_inventory_weight):
@@ -34,6 +34,8 @@ def test_loot_location_with_full_inventory(setup):
     assert lootable == True
     assert player.get_inventory_weight() == player.max_inventory_weight
     assert map_square.loot_amount == 1
+    captured = capsys.readouterr().out
+    assert  f"Unable to collect {loot.name}" in captured
 
 @pytest.mark.test
 def test_loot_location_with_partial_inventory(setup):
