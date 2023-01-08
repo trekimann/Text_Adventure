@@ -7,7 +7,10 @@
     "mapDescription": "The Delta Quadrant is a vast and largely unexplored region of space, filled with dangers and mysteries. As you chart a course through this uncharted territory, you'll encounter abandoned Borg cubes, hostile Kazon planets, and swirling nebulae filled with unknown life forms. You'll also encounter friendly ships and locations, such as federation shuttles and shipyards, where you can find valuable loot and supplies. But be on guard at all times, as danger lurks around every corner in this treacherous region of space.",
     "playerData": {
         "startingX": 2,
-        "startingY": 2
+        "startingY": 2,
+        "startingHealth": 10,
+        "startingArmour": 10,
+        "startingWeapon": "Hand Phaser"
     },
     "items": [
         {
@@ -90,12 +93,28 @@
         },
         {
             "itemType": "weapon",
-            "name": "Phaser Rifle",
+            "name": "Hand Phaser",
             "weight": 0.5,
+            "value": 10,
+            "cost": 100,
+            "multiplier": 0,
+            "description": "A handheld energy weapon used by Starfleet",
+            "equippable": true,
+            "equipped": false,
+            "colour": "yellow",
+            "healthRecovery": 0,
+            "damageRangeMin": 0.1,
+            "damageRangeMax": 1,
+            "damageModifier": 1
+        },
+        {
+            "itemType": "weapon",
+            "name": "Phaser Rifle",
+            "weight": 3,
             "value": 100,
             "cost": 1000,
             "multiplier": 0,
-            "description": "A handheld energy weapon used by Starfleet",
+            "description": "A powerful handheld energy weapon used by Starfleet",
             "equippable": true,
             "equipped": false,
             "colour": "yellow",

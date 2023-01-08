@@ -26,7 +26,8 @@ class TextAdventureGame:
     # Create player object
     self.player = src.Player(name, description, self.game_data.player_data['starting_location'])
     # Give player default items
-    default_weapon = src.Weapon(
+    if self.game_data.player_data['starting_weapon'] is None:
+      self.player.add_to_inventory(src.Weapon(
       name = "Rusty Sword", 
       weight = 1,
       health_recovery = 0,
@@ -37,9 +38,13 @@ class TextAdventureGame:
       item_colour = "brown",
       type="weapon",
       damage_range=(0.1,1),
-      damage_modifier=2)
-    self.player.add_to_inventory(default_weapon)
-
+      damage_modifier=2))
+    else:
+      self.player.add_to_inventory(self.game_data.player_data['starting_weapon'])
+    if self.game_data.player_data['starting_armour'] != None:
+      self.player.armour = self.game_data.player_data['starting_armour']
+    if self.game_data.player_data['starting_health'] != None:
+      self.player.health = self.game_data.player_data['starting_health']
     # Create map object
     self.current_map = src.Map(self.game_data.map_data, self.game_data.enemy_options)
 

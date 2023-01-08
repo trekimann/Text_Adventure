@@ -17,8 +17,6 @@ class GameData:
             money = {}
             # Map details
             self.map_data['map_size'] = (data['size']['width'], data['size']['height'])
-            # Player starting Details 
-            self.player_data['starting_location']=(data['playerData']['startingX'],data['playerData']['startingY'])
             # Loot options
             for loot_options in data['items']:
               if loot_options['itemType'] in ("health", 'armour', 'key', 'treasure', 'None'):
@@ -105,5 +103,10 @@ class GameData:
                   square.shop = self.store_options[square.shop_ID]
                 
                 self.map_data['map_squares'][(square_data['coordinates'][0], square_data['coordinates'][1])] = square
+            # Player starting Details 
+            self.player_data['starting_location']=(data['playerData']['startingX'],data['playerData']['startingY'])
+            self.player_data['starting_health']=data['playerData']['startingHealth']
+            self.player_data['starting_armour']=data['playerData']['startingArmour']
+            self.player_data['starting_weapon']=self.item_options[data['playerData']['startingWeapon']]
 
         print("Game Data Loaded")
