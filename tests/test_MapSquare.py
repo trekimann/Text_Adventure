@@ -56,3 +56,59 @@ def test_loot_location_with_no_loot(setup):
     lootable = map_square.loot_location(player)
     assert lootable == False
     assert len(player.inventory) == 0
+
+@pytest.mark.test
+def test_loot_location_with_no_loot_chance(setup):
+    player, loot, map_square = setup
+    # Test looting a location with no loot chance
+    map_square.loot_chance = 0
+    lootable = map_square.loot_location(player)
+    assert lootable == False
+    assert len(player.inventory) == 0
+
+@pytest.mark.test
+def test_loot_location_with_no_loot_amount(setup):
+    player, loot, map_square = setup
+    # Test looting a location with no loot amount
+    map_square.loot_amount = 0
+    lootable = map_square.loot_location(player)
+    assert lootable == False
+    assert len(player.inventory) == 0
+
+@pytest.mark.test
+def test_loot_location_player_leaves_loot(setup):
+    player, loot, map_square = setup
+    # Test player leaving loot
+    with mock.patch('builtins.input', side_effect=['3']):
+        lootable = map_square.loot_location(player)
+    assert lootable == True
+    assert len(player.inventory) == 0
+    assert map_square.loot_amount == 1
+
+@pytest.mark.test
+def test_loot_location_player_tried_to_take_more_than_available(setup, capsys):
+    player, loot, map_square = setup
+    map_square.loot_amount = 2
+    # Test player trying to take more than available
+    with mock.patch('builtins.input', side_effect=['2','3']):
+        lootable = map_square.loot_location(player)
+    assert lootable == True
+    assert len(player.inventory) == 1
+    assert player.inventory[loot.name]['count'] == 2
+    assert map_square.loot_amount == 0
+    captured = capsys.readouterr()
+    assert  "Loot depleted" in captured.out
+
+@pytest.mark.test
+def test_player_selects_invalid_option(setup, capsys):
+    player, loot, map_square = setup
+    incorrect_input = 'God'
+    expected_output = f"{incorrect_input} : not valid choice. Please use a number"
+    # Test player selecting an invalid option
+    with mock.patch('builtins.input', side_effect=[incorrect_input,'3']):
+        lootable = map_square.loot_location(player)
+    assert lootable == True
+    assert len(player.inventory) == 0
+    assert map_square.loot_amount == 1
+    captured = capsys.readouterr().out
+    assert  expected_output in captured

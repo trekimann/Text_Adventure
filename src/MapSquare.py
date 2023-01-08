@@ -53,7 +53,7 @@ class MapSquare:
                 if self.loot_amount > 1:
                     amount_to_loot = int(input(f"How many do you want to collect?: "))
                 for _ in range(amount_to_loot):
-                    if self.loot_amount >0:                        
+                    if self.loot_amount > 0:                        
                         picked_up = player.add_to_inventory(self.loot)
                         if not picked_up:
                             print(f"Unable to collect {self.loot.name}")
