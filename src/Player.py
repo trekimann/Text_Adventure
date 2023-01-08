@@ -39,7 +39,7 @@ class Player(src.Character):
   def display_stats(self):
     self.check_health()
     self.check_armour()
-    print("{} has killed {} enemies".format(self.name, self.kills))
+    print(f"{self.name} has killed {self.kills} enemies")
 
   def add_to_inventory(self, item):
     if item is None:
