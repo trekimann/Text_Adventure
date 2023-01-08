@@ -66,11 +66,13 @@ class Wallet:
                 total_paid += num_needed * money_value
                 target_wallet.add_money(self.money[money]['item'], num_needed)
                 self.money[money]['count'] -= num_needed
+                if self.money[money]['count'] <= 0:
+                    del self.money[money]
             # If there are not enough of this type of money, pay as many as possible
             else:
                 total_paid += self.money[money]['count'] * money_value
                 target_wallet.add_money(self.money[money]['item'], self.money[money]['count'])
-                # del self.money[money]
+                del self.money[money]
             # If the desired amount has been reached, break out of the loop
             if total_paid == amount:
                 break
@@ -109,11 +111,13 @@ class Wallet:
                 total_paid += num_needed * money_value
                 target_wallet.add_money(self.money[money]['item'], num_needed)
                 self.money[money]['count'] -= num_needed
+                if self.money[money]['count'] <= 0:
+                    del self.money[money]
             # If there are not enough of this type of money, pay as many as possible
             else:
                 total_paid += self.money[money]['count'] * money_value
                 target_wallet.add_money(self.money[money]['item'], self.money[money]['count'])
-                # del self.money[money]
+                del self.money[money]
             # If the desired amount has been reached, break out of the loop
             if total_paid == amount:
                 self.add_money(money_to_break)
