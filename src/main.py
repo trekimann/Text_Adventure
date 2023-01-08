@@ -1,12 +1,9 @@
-from MapSquare import MapSquare
-from BaseClasses.Item import Item
-from Player import Player
-from Map import Map
-from GameData import GameData
-from TextColour import TC
-from Weapon import Weapon
+import sys
+sys.path.append("../Text_Adventure")
 
-tc = TC()
+import src
+
+tc = src.TC()
 
 class TextAdventureGame:
   def __init__(self):
@@ -19,7 +16,7 @@ class TextAdventureGame:
     # Load game Data
     map_choice = input("Pick a map: ")
     game_json = "src/Maps/"+map_choice+".json"
-    self.game_data = GameData()
+    self.game_data = src.GameData()
     self.game_data.load_from_json(game_json)
 
     # Get player name and description
@@ -27,9 +24,9 @@ class TextAdventureGame:
     description = input("Enter your description: ")
     
     # Create player object
-    self.player = Player(name, description, self.game_data.player_data['starting_location'])
+    self.player = src.Player(name, description, self.game_data.player_data['starting_location'])
     # Give player default items
-    default_weapon = Weapon(
+    default_weapon = src.Weapon(
       name = "Rusty Sword", 
       weight = 1,
       health_recovery = 0,
@@ -44,7 +41,7 @@ class TextAdventureGame:
     self.player.add_to_inventory(default_weapon)
 
     # Create map object
-    self.current_map = Map(self.game_data.map_data, self.game_data.enemy_options)
+    self.current_map = src.Map(self.game_data.map_data, self.game_data.enemy_options)
 
   def play(self):
     # Display starting location and options
@@ -102,7 +99,7 @@ class TextAdventureGame:
   def display_location(self, from_instructions = False):
     # Get current location data
     x, y = self.player.get_location()
-    location: MapSquare = self.current_map.get_location(x, y)
+    location: src.MapSquare = self.current_map.get_location(x, y)
     
     # Display location description
     print(f"Current Location: X:{x} Y:{y}")

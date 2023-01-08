@@ -1,6 +1,7 @@
-from TextColour import TC
+import src
+# from TextColour import TC
 
-tc = TC()
+tc = src.TC()
 
 class Item:
     def __init__(self, name, weight, value, description,type,equipped = False,equippable = False, item_colour="green", cost=0, health_recovery=0):

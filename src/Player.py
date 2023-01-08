@@ -1,11 +1,8 @@
-from TextColour import TC
-from BaseClasses.Item import Item
-from BaseClasses.Character import Character
-from Wallet import Wallet
+import src
 
-tc= TC()
+tc= src.TC()
 
-class Player(Character):
+class Player(src.Character):
   def __init__(self, name, description, current_location=(0,0), max_moves = 100):
     super().__init__(
       name=name,
@@ -19,10 +16,10 @@ class Player(Character):
     self.kills = 0
     self.bestiary = {}
     self.moves = max_moves
-    self.wallet = Wallet()
+    self.wallet = src.Wallet()
     self.keys = {
       "default": {
-        "key": Item("default", 0, 0, 0, "", "key", True, False),
+        "key": src.Item("default", 0, 0, 0, "", "key", True, False),
         "count": max_moves,
       }
     }
@@ -104,7 +101,7 @@ class Player(Character):
     # Calculate total weight of items in inventory
     total_weight = 0
     for item in self.inventory:
-      total_weight += self.inventory[item]['item'].weight
+      total_weight += self.inventory[item]['item'].weight * self.inventory[item]['count']
     total_weight += self.wallet.wallet_weight()
 
     return total_weight

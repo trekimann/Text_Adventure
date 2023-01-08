@@ -1,7 +1,6 @@
-from Battle import Battle
-from TextColour import TC
+import src
 
-tc = TC()
+tc = src.TC()
 
 class Map:
     def __init__(self, map_data, enemy_options):
@@ -48,7 +47,7 @@ class Map:
         # trigger fight
         enemy = self.enemy_options[location.enemy_type]
         enemy.reset()
-        battle = Battle(player = player, enemy = enemy)
+        battle = src.Battle(player = player, enemy = enemy)
         if battle.start():
           location.enemy_killed()
       location.loot_location(player)

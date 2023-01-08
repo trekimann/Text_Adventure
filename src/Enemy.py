@@ -1,11 +1,11 @@
 import random
-from BaseClasses.Character import Character
-from Weapon import Weapon
+import src
 
-class Enemy(Character):
-    def __init__(self, name, description, health, damage_resistance_multiplier, attack_multiplier, enemy_type, loot_chance, loot, armour = 0, weapon: Weapon = None, loot_amount = 0):
+
+class Enemy(src.Character):
+    def __init__(self, name, description, health, damage_resistance_multiplier, attack_multiplier, enemy_type, loot_chance, loot, armour = 0, weapon: src.Weapon = None, loot_amount = 0):
         if weapon is None:
-            weapon = Weapon(
+            weapon = src.Weapon(
             name = "Rusty Sword", 
             weight = 1,
             health_recovery = 0,

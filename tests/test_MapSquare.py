@@ -1,46 +1,58 @@
-import unittest
+import pytest
+import mock
 
-from src.MapSquare import MapSquare
-from src.BaseClasses.Item import Item
-from src.Player import Player
+import src
 
-class TestMapSquare(unittest.TestCase):
-    def setUp(self):
-        # Create a player and a MapSquare with loot
-        self.player = Player()
-        self.loot = Item("Gold Coins", 0.01, 10, "A pile of gold coins", "money")
-        self.map_square = MapSquare("A room with loot", 0, 1, "None", [], self.loot)
+@pytest.fixture
+def setup():
+    # Create a player and a MapSquare with loot
+    player = src.Player('God', 'The creator of the universe', (0,0))
+    player.max_inventory_weight = 2
+    loot = src.Item("Gold Coins", 1, 10, "A pile of gold coins", "treasure")
+    map_square = src.MapSquare("A room with loot", 0, 1, "None", [], loot)
+    return player, loot, map_square
 
-    def test_loot_location_with_empty_inventory(self):
-        # Test looting with an empty inventory
-        lootable = self.map_square.loot_location(self.player)
-        self.assertTrue(lootable)
-        self.assertEqual(len(self.player.inventory), 1)
-        self.assertEqual(self.player.inventory[0], self.loot)
-        self.assertEqual(self.map_square.loot_amount, 0)
+@pytest.mark.test
+def test_loot_location_with_empty_inventory(setup):
+    player, loot, map_square = setup
+    # Test looting with an empty inventory
+    with mock.patch('builtins.input', side_effect=['2','1']):
+        lootable = map_square.loot_location(player)
+    assert lootable == True
+    assert len(player.inventory) == 1
+    assert player.inventory[loot.name]['item'] == loot
+    assert map_square.loot_amount == 0
 
-    def test_loot_location_with_full_inventory(self):
-        # Test looting with a full inventory
-        self.player.inventory = [self.loot] * self.player.inventory_size
-        lootable = self.map_square.loot_location(self.player)
-        self.assertTrue(lootable)
-        self.assertEqual(len(self.player.inventory), self.player.inventory_size)
-        self.assertEqual(self.map_square.loot_amount, 1)
+@pytest.mark.test
+def test_loot_location_with_full_inventory(setup):
+    player, loot, map_square = setup
+    # Test looting with a full inventory
+    for _ in range(player.max_inventory_weight):
+        player.add_to_inventory(loot)
+    with mock.patch('builtins.input', side_effect=['2','1']):
+        lootable = map_square.loot_location(player)
+    assert lootable == True
+    assert player.get_inventory_weight() == player.max_inventory_weight
+    assert map_square.loot_amount == 1
 
-    def test_loot_location_with_partial_inventory(self):
-        # Test looting with a partially full inventory
-        self.player.inventory = [self.loot] * (self.player.inventory_size - 1)
-        lootable = self.map_square.loot_location(self.player)
-        self.assertTrue(lootable)
-        self.assertEqual(len(self.player.inventory), self.player.inventory_size)
-        self.assertEqual(self.map_square.loot_amount, 0)
+@pytest.mark.test
+def test_loot_location_with_partial_inventory(setup):
+    player, loot, map_square = setup
+    # Test looting with a partially full inventory
+    start_weight = player.max_inventory_weight - 1
+    for _ in range(start_weight):
+        player.add_to_inventory(loot)
+    with mock.patch('builtins.input', side_effect=['2','1']):
+        lootable = map_square.loot_location(player)
+    assert lootable == True
+    assert player.get_inventory_weight() == start_weight +1
+    assert map_square.loot_amount == 0
 
-    def test_loot_location_with_no_loot(self):
-        # Test looting a location with no loot
-        self.map_square.loot_amount = 0
-        lootable = self.map_square.loot_location(self.player)
-        self.assertFalse(lootable)
-        self.assertEqual(len(self.player.inventory), 0)
-
-if __name__ == '__main__':
-    unittest.main()
+@pytest.mark.test
+def test_loot_location_with_no_loot(setup):
+    player, loot, map_square = setup
+    # Test looting a location with no loot
+    map_square.loot_amount = 0
+    lootable = map_square.loot_location(player)
+    assert lootable == False
+    assert len(player.inventory) == 0

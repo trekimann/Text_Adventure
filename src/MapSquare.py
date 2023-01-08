@@ -1,14 +1,9 @@
 import random
-from BaseClasses.Item import Item
+import src
 
-from Player import Player
-from Shop import Shop
-
-from TextColour import TC
-
-tc = TC()
+tc = src.TC()
 class MapSquare:
-    def __init__(self, description, enemy_chance, loot_chance, enemy_type, enemy_options, loot: Item, loot_amount = 1, key = None, shop_ID = False, shop = None):
+    def __init__(self, description, enemy_chance, loot_chance, enemy_type, enemy_options, loot: src.Item, loot_amount = 1, key = None, shop_ID = False, shop = None):
         self.description = description
         self.enemy_chance = enemy_chance
         self.loot_chance = loot_chance
@@ -19,19 +14,19 @@ class MapSquare:
         self.dead_enemies = 0
         self.key = key
         self.shop_ID = shop_ID
-        self.shop:Shop = shop
+        self.shop:src.Shop = shop
 
     def has_shop(self):
         return self.shop != None
 
-    def use_shop(self, player: Player):
+    def use_shop(self, player: src.Player):
         self.shop.use_shop(player)
 
     def has_enemy(self):
         enemy_encounter = random.random() < self.enemy_chance
         return enemy_encounter
 
-    def loot_location(self, player: Player):
+    def loot_location(self, player: src.Player):
         lootable = random.random() < self.loot_chance
         if not lootable or self.loot_amount<= 0:
             return False

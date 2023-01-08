@@ -1,11 +1,10 @@
 import random
-from TextColour import TC
-from Weapon import Weapon
+import src
 
-tc = TC()
+tc = src.TC()
 
 class Character:
-    def __init__(self, name, description, health, armour, weapon: Weapon = None, damage_resistance_multiplier = 1, attack_multiplier = 1):
+    def __init__(self, name, description, health, armour, weapon: src.Weapon = None, damage_resistance_multiplier = 1, attack_multiplier = 1):
         self.name = name
         self.description = description
         self.health = health
@@ -39,7 +38,7 @@ class Character:
         print(f"{self.name} has {tc.colour('green')}{self.health}{tc.colour()} health hit points remaining")
         return self.is_dead()
           
-    def equip_weapon(self, weapon: Weapon):
+    def equip_weapon(self, weapon: src.Weapon):
         # un-equip the old weapon
         if self.weapon is not None:
             self.weapon.equipped = False

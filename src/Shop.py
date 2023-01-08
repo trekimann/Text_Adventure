@@ -1,17 +1,16 @@
-from TextColour import TC
-from Player import Player
-from Wallet import Wallet
+import src
 
-tc = TC()
+
+tc = src.TC()
 
 class Shop:
-    def __init__(self, shop_items, cost_multiplier, shop_ID, wallet: Wallet):
+    def __init__(self, shop_items, cost_multiplier, shop_ID, wallet: src.Wallet):
         self.shop_items = shop_items
         self.cost_multiplier = cost_multiplier
         self.shop_ID = shop_ID
         self.wallet = wallet
     
-    def use_shop(self, player: Player):
+    def use_shop(self, player: src.Player):
         if self.shop_ID == 0:
             return
         print(f"The shop stocks the following:")
@@ -52,7 +51,7 @@ class Shop:
                 else:
                     break
 
-    def buy_from_player(self, player: Player):
+    def buy_from_player(self, player: src.Player):
         player.display_inventory()
         while True:
             item_name = input("Enter the item name: ")
@@ -89,7 +88,7 @@ class Shop:
         else:
             self.shop_items[product.name] = {product.name: product, 'stock': 1}   
 
-    def sell_to_player(self, player: Player, item_name, item_number):
+    def sell_to_player(self, player: src.Player, item_name, item_number):
         product = self.shop_items[item_name][item_name]
         total_cost = (product.cost * self.cost_multiplier) * item_number
         player.wallet.pay_money(total_cost, self.wallet)

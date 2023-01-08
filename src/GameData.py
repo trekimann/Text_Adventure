@@ -1,12 +1,6 @@
 import json
+import src
 
-from Enemy import Enemy
-from MapSquare import MapSquare
-from BaseClasses.Item import Item
-from Money import Money
-from Shop import Shop
-from Weapon import Weapon
-from Wallet import Wallet
 
 class GameData:
     def __init__(self):
@@ -28,7 +22,7 @@ class GameData:
             # Loot options
             for loot_options in data['items']:
               if loot_options['itemType'] in ("health", 'armour', 'key', 'treasure', 'None'):
-                loot = Item(
+                loot = src.Item(
                   name = loot_options['name'],
                   weight= loot_options['weight'],
                   health_recovery=loot_options['healthRecovery'],
@@ -40,7 +34,7 @@ class GameData:
                   type=loot_options['itemType'],
                   cost=loot_options['cost'])
               elif loot_options['itemType'] == 'weapon':
-                loot = Weapon(
+                loot = src.Weapon(
                 name = loot_options['name'],
                 weight= loot_options['weight'],
                 health_recovery=loot_options['healthRecovery'],
@@ -55,7 +49,7 @@ class GameData:
                 damage_modifier=loot_options['damageModifier']
                 )
               elif loot_options['itemType'] == "money":
-                loot = Money(
+                loot = src.Money(
                   name = loot_options['name'],
                   weight= loot_options['weight'],
                   value=loot_options['value'],
@@ -71,10 +65,10 @@ class GameData:
               stock = {}
               for item, value in shopItems['shopItems'].items():
                 stock[item] = {item: self.item_options[item], "stock": value}
-              wallet = Wallet()
+              wallet = src.Wallet()
               for currency in shopItems['shopWallet']:
                 wallet.add_money(money[currency], shopItems['shopWallet'][currency])
-              self.store_options[shopItems['shopID']] = Shop(
+              self.store_options[shopItems['shopID']] = src.Shop(
                 shop_items=stock,
                 cost_multiplier= shopItems['shopCost'],
                 shop_ID=shopItems['shopID'],
@@ -82,7 +76,7 @@ class GameData:
 
             # Enemy Options
             for enemy_options in data["enemies"]:
-              enemy = Enemy(
+              enemy = src.Enemy(
                 enemy_type = enemy_options['enemyType'],
                 name = enemy_options['name'],
                 description = enemy_options['description'],
@@ -96,7 +90,7 @@ class GameData:
               self.enemy_options[enemy.enemy_type]=enemy
             # map grid details
             for square_data in data['mapSquares']:
-                square = MapSquare(
+                square = src.MapSquare(
                     description=square_data['description'],
                     enemy_chance=square_data['chanceOfEnemies'],
                     loot_chance=square_data['chanceOfLoot'],

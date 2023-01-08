@@ -1,7 +1,6 @@
-from Money import Money
-from TextColour import TC
+import src
 
-tc = TC()
+tc = src.TC()
 
 class Wallet:
     def __init__(self):
@@ -25,11 +24,12 @@ class Wallet:
     def flash_cash(self):
         money_value = 0
         for money_type in self.money:
-            money:Money = self.money[money_type]['item']
+            money:src.Money = self.money[money_type]['item']
             print(f"   {tc.colour(money.item_colour)}{money_type}{tc.colour()} ({money.weight}kg each) x{self.money[money_type]['count']}")
             print("      "+money.description)
             money_value += money.value * self.money[money_type]['count']
         print(f"Money total value: {money_value}")
+        return money_value
 
     def add_money(self, money, count = 1):
         # Add item to inventory
@@ -59,9 +59,9 @@ class Wallet:
                 self.money[money]['count'] -= num_needed
             # If there are not enough of this type of money, pay as many as possible
             else:
-                total_paid += self.money[money] * money_value
+                total_paid += self.money[money]['count'] * money_value
                 target_wallet.add_money(self.money[money]['item'], self.money[money]['count'])
-                del self.money[money]
+                # del self.money[money]
             # If the desired amount has been reached, break out of the loop
             if total_paid == amount:
                 break
