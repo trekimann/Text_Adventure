@@ -23,22 +23,29 @@ class Player(src.Character):
         "count": max_moves,
       }
     }
+
+  def moves_remaining(self):
+    print(f"You have {tc.colour('yellow')}{self.moves}{tc.colour()} moves remaining.")
+    return self.moves
       
   def check_health(self):
     if self.health <= 0:
       print(f"{self.name} has died.")
     else:
       print(f"{self.name} has {tc.colour('green')}{self.health}{tc.colour()} hit points remaining.")
+    return self.health
 
   def check_armour(self):
     if self.armour <= 0:
       print(f"{self.name} has no armour.")
     else:
       print(f"{self.name} armour has {tc.colour('blue')}{self.armour}{tc.colour()} hit points remaining.")
+    return self.armour
 
   def display_stats(self):
     self.check_health()
     self.check_armour()
+    self.moves_remaining()
     print(f"{self.name} has killed {self.kills} enemies")
 
   def add_to_inventory(self, item):
@@ -187,6 +194,7 @@ class Player(src.Character):
     # Move the player to a new map Square.
     self.current_location = x,y
     self.moves -= 1
+    self.moves_remaining()
     if self.moves < 0:
       self.health = 0
 
