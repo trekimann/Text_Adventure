@@ -52,6 +52,7 @@ class TextAdventureGame:
     # Display starting location and options
     self.display_location()
     self.display_options()
+    self.current_map.print_map_description()
     
     # Main game loop
 

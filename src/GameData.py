@@ -17,6 +17,7 @@ class GameData:
             money = {}
             # Map details
             self.map_data['map_size'] = (data['size']['width'], data['size']['height'])
+            self.map_data['map_description'] = data['mapDescription']
             # Loot options
             for loot_options in data['items']:
               if loot_options['itemType'] in ("health", 'armour', 'key', 'treasure', 'None'):

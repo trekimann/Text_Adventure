@@ -11,6 +11,10 @@ class Map:
 
         self.map_squares = map_data['map_squares']
         self.enemy_options = enemy_options
+        self.map_description = map_data['map_description']
+
+    def print_map_description(self):
+      print(f"{self.map_description}")
 
     def get_location(self, x, y):
       if self.viable_grid(x, y):
@@ -73,7 +77,8 @@ class Map:
       return x,y
 
     def read_map(self):
-      print("Enter grid reference to see its description")
+      self.print_map_description()
+      print("Enter a grid reference to see its description")
       x = int(input("Enter X reference: "))
       y = int(input("Enter Y reference: "))
       print("---------------")
