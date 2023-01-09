@@ -103,7 +103,7 @@
             "equipped": false,
             "colour": "yellow",
             "healthRecovery": 0,
-            "damageRangeMin": 0.1,
+            "damageRangeMin": 0.5,
             "damageRangeMax": 1,
             "damageModifier": 1
         },
@@ -186,6 +186,20 @@
             "lootAmount": 100,
             "damage_resistance_multiplier": 1.5,
             "attack_multiplier": 1.5
+        },
+        {
+            "enemyType": "Borg",
+            "name": "Borg Tactical Drone",
+            "description": "An advanced member of the Borg Collective, the Borg Tactical Drone is equipped with advanced weapons and tactics to assist in assimilating other species. It is even more formidable than the regular Borg Drone, with a higher level of technology and more powerful weapons. Its organic and artificial parts are seamlessly integrated, making it immune to many forms of attack. The Borg's primary goal is to assimilate other species and technologies into the Collective, and they will stop at nothing to achieve this goal.",
+            "health": 100,
+            "loot_chance": 0.5,
+            "loot": "Federation Credit",
+            "lootAmount": 200,
+            "damage_resistance_multiplier": 2.0,
+            "attack_multiplier": 5.0,
+            "boss": true,
+            "weakAgainst": "IMod",
+            "weaknessMultiplier": 0.3
         },
         {
             "enemyType": "Kazon",
