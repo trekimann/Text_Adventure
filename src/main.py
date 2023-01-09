@@ -45,6 +45,8 @@ class TextAdventureGame:
       self.player.armour = self.game_data.player_data['starting_armour']
     if self.game_data.player_data['starting_health'] != None:
       self.player.health = self.game_data.player_data['starting_health']
+    if self.game_data.player_data['starting_carry_weight'] != None:
+      self.player.carry_weight = self.game_data.player_data['starting_carry_weight']
     # Create map object
     self.current_map = src.Map(self.game_data.map_data, self.game_data.enemy_options)
 

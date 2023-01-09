@@ -127,5 +127,6 @@ class GameData:
             self.player_data['starting_health']=data['playerData']['startingHealth']
             self.player_data['starting_armour']=data['playerData']['startingArmour']
             self.player_data['starting_weapon']=self.item_options[data['playerData']['startingWeapon']]
+            self.player_data['starting_carry_weight']=data['playerData']['startingCarryWeight']
 
         print("Game Data Loaded")
