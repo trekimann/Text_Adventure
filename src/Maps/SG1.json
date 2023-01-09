@@ -1,0 +1,703 @@
+{
+    "name": "Stargate Command",
+    "size": {
+        "width": 5,
+        "height": 5
+    },
+    "mapDescription": "Stargate Command is the main base of operations for the Stargate Program. It is located in Cheyenne Mountain, Colorado, United States of America. The Base is being overrun by the Goa'uld System Lord Apophis and his Jaffa. You must stop him!",
+    "playerData": {
+        "startingX": 2,
+        "startingY": 2,
+        "startingHealth": 25,
+        "startingArmour": 30,
+        "startingWeapon": "M9",
+        "startingCarryWeight": 10
+    },
+    "items": [
+        {
+            "itemType": "None",
+            "name": "None",
+            "description": "",
+            "weight": 0,
+            "value": 0,
+            "cost": 0,
+            "multiplier": 0,
+            "healthRecovery": 0,
+            "equippable": false,
+            "equipped": false,
+            "colour": "yellow"
+        },
+        {
+            "itemType": "money",
+            "name": "Dollar",
+            "description": "A single Dollar Bill",
+            "weight": 0.01,
+            "value": 1,
+            "cost": 1,
+            "multiplier": 0,
+            "equippable": false,
+            "equipped": false,
+            "colour": "yellow",
+            "healthRecovery": 0
+        },
+        {
+            "itemType": "money",
+            "name": "5 Dollar Bill",
+            "weight": 0.01,
+            "value": 5,
+            "cost": 5,
+            "multiplier": 0,
+            "description": "A five dollar bill",
+            "equippable": false,
+            "equipped": false,
+            "colour": "yellow",
+            "healthRecovery": 0
+        },
+        {
+            "itemType": "health",
+            "name": "Med Kit",
+            "healthRecovery": 10,
+            "description": "Standard field kit",
+            "equippable": false,
+            "equipped": false,
+            "colour": "green",
+            "weight": 1,
+            "value": 0,
+            "cost": 0,
+            "multiplier": 0
+        },
+        {
+            "itemType": "health",
+            "name": "Jello",
+            "healthRecovery": 5,
+            "description": "Some lovely green jello",
+            "equippable": false,
+            "equipped": false,
+            "colour": "green",
+            "weight": 0.5,
+            "value": 0,
+            "cost": 0,
+            "multiplier": 0
+        },
+        {
+            "itemType": "health",
+            "name": "Hand Device",
+            "healthRecovery": 50,
+            "description": "Special Device used by the Goa'uld to heal themselves",
+            "equippable": false,
+            "equipped": false,
+            "colour": "green",
+            "weight": 3,
+            "value": 0,
+            "cost": 0,
+            "multiplier": 0
+        },
+        {
+            "itemType": "armour",
+            "name": "Kevlar Vest",
+            "description": "A lightweight vest made of advanced materials that provides protection against bullets and other forms of damage.",
+            "weight": 5,
+            "value": 0,
+            "cost": 0,
+            "multiplier": 0,
+            "equippable": true,
+            "equipped": false,
+            "colour": "bright blue",
+            "healthRecovery": 15
+        },
+        {
+            "itemType": "armour",
+            "name": "Personal Shield",
+            "description": "A powerful personal forcefield.",
+            "weight": 1,
+            "value": 0,
+            "cost": 0,
+            "multiplier": 0,
+            "equippable": true,
+            "equipped": false,
+            "colour": "bright blue",
+            "healthRecovery": 50
+        },
+        {
+            "itemType": "weapon",
+            "name": "M9",
+            "weight": 0.5,
+            "value": 0,
+            "cost": 0,
+            "multiplier": 0,
+            "description": "A pistol used by the US Military",
+            "equippable": true,
+            "equipped": false,
+            "colour": "yellow",
+            "healthRecovery": 0,
+            "damageRangeMin": 0.5,
+            "damageRangeMax": 1,
+            "damageModifier": 1
+        },
+        {
+            "itemType": "weapon",
+            "name": "Zat",
+            "weight": 0.5,
+            "value": 0,
+            "cost": 0,
+            "multiplier": 0,
+            "description": "A handheld energy weapon used by the Goa'uld",
+            "equippable": true,
+            "equipped": false,
+            "colour": "yellow",
+            "healthRecovery": 0,
+            "damageRangeMin": 1,
+            "damageRangeMax": 2,
+            "damageModifier": 1
+        },
+        {
+            "itemType": "weapon",
+            "name": "P90",
+            "weight": 2,
+            "value": 0,
+            "cost": 0,
+            "multiplier": 0,
+            "description": "A powerful SMG used by the US Military",
+            "equippable": true,
+            "equipped": false,
+            "colour": "yellow",
+            "healthRecovery": 0,
+            "damageRangeMin": 1,
+            "damageRangeMax": 3,
+            "damageModifier": 1
+        },
+        {
+            "itemType": "weapon",
+            "name": "Staff Weapon",
+            "weight": 5,
+            "value": 0,
+            "cost": 0,
+            "multiplier": 0,
+            "description": "A powerful energy weapon used by the Ja'far",
+            "equippable": true,
+            "equipped": false,
+            "colour": "yellow",
+            "healthRecovery": 0,
+            "damageRangeMin": 3,
+            "damageRangeMax": 6,
+            "damageModifier": 1
+        },
+        {
+            "itemType": "key",
+            "name": "Level 1 Access Card",
+            "weight": 0.0,
+            "value": 0,
+            "cost": 0,
+            "multiplier": 0,
+            "description": "An access card used to open doors and access restricted areas on the base",
+            "equippable": false,
+            "equipped": false,
+            "colour": "yellow",
+            "healthRecovery": 0
+        },
+        {
+            "itemType": "key",
+            "name": "Level 2 Access Card",
+            "weight": 0.0,
+            "value": 0,
+            "cost": 0,
+            "multiplier": 0,
+            "description": "An access card used to open doors and access restricted areas on the base",
+            "equippable": false,
+            "equipped": false,
+            "colour": "yellow",
+            "healthRecovery": 0
+        }
+    ],
+    "storeItems": [
+        {
+            "shopID": 1,
+            "shopCost": 1,
+            "shopItems": {
+                "Kevlar Vest": 5,
+                "Med Kit": 5,
+                "P90": 1
+            },
+            "shopWallet": {
+                "Dollar": 1000,
+                "5 Dollar Bill": 1000
+            }
+        },
+        {
+            "shopID": 2,
+            "shopCost": 1,
+            "shopItems": {
+                "Kevlar Vest": 2,
+                "Med Kit": 1,
+                "Staff Weapon": 1
+            },
+            "shopWallet": {
+                "Dollar": 1000,
+                "5 Dollar Bill": 1000
+            }
+        },
+        {
+            "shopID": 3,
+            "shopCost": 1,
+            "shopItems": {
+                "Kevlar Vest": 1,
+                "Med Kit": 10
+            },
+            "shopWallet": {
+                "Dollar": 1000,
+                "5 Dollar Bill": 1000
+            }
+        }
+    ],
+    "enemies": [
+        {
+            "enemyType": "None",
+            "name": "None",
+            "description": "None",
+            "health": 0,
+            "loot_chance": 0,
+            "loot_type": "",
+            "loot": "None",
+            "lootAmount": 0,
+            "damage_resistance_multiplier": 0.1,
+            "attack_multiplier": 0.1,
+            "boss": false,
+            "weapon": "None"
+        },
+        {
+            "enemyType": "Jaffa",
+            "name": "Jaffa Warrior",
+            "description": "Jaffa Warriors are the soldiers of the Goa'uld, an evil race of aliens who seek to take control of the galaxy. They are equipped with advanced Goa'uld technology, including the powerful staff weapons. They are highly disciplined and willing to die in defence of their god-like masters.",
+            "health": 25,
+            "loot_chance": 0.2,
+            "weapon": "Zat",
+            "lootType": "weapon",
+            "loot": "Zat",
+            "lootAmount": 1,
+            "damage_resistance_multiplier": 1.0,
+            "attack_multiplier": 1,
+            "boss":false
+        },
+        {
+            "enemyType": "Goa'uld",
+            "name": "Goa'uld System Lord",
+            "description": "A powerful System Lord of the Goa'uld, the System Lords seek to take control of the galaxy. They are equipped with powerful Goa'uld technologies and have access to vast resources. Their tactics are highly advanced, making them a formidable opponent on the battlefield. They will stop at nothing to achieve their goals.",
+            "health": 100,
+            "loot_chance": 0.5,
+            "weapon": "Staff Weapon",
+            "lootType": "armour",
+            "loot": "Personal Shield",
+            "lootAmount": 1,
+            "damage_resistance_multiplier": 1,
+            "attack_multiplier": 1,
+            "boss": true,
+            "weakAgainst": "Staff Weapon",
+            "weaknessMultiplier": 0.6
+        },{
+            "enemyType": "First Prime",
+            "name": "Jaffa First Prime",
+            "description": "The first prime of Aphophis, the Jaffa First Prime is a powerful Jaffa warrior. He is equipped with advanced Goa'uld technology, including the powerful staff weapon. He is highly disciplined and willing to die in defence of his god-like master.",
+            "health": 50,
+            "loot_chance": 1,
+            "weapon": "Staff Weapon",
+            "lootType": "key",
+            "loot": "Level 2 Access Card",
+            "lootAmount": 1,
+            "damage_resistance_multiplier": 1,
+            "attack_multiplier": 1,
+            "boss": true,
+            "weakAgainst": "Zat",
+            "weaknessMultiplier": 0.6
+        }
+    ],
+    "mapSquares": [
+        {
+            "coordinates": [
+                0,
+                0
+            ],
+            "description": "Kitchen Freezer. You aren't sure why you came in here but once in a while it might pay off....",
+            "chanceOfEnemies": 0.3,
+            "chanceOfLoot": 0.05,
+            "enemyType": "Jaffa",
+            "lootName": "Personal Shield",
+            "lootAmount": 2,
+            "lootType": "armour",
+            "requiredKey": "default",
+            "shopID": 0,
+            "canMove":["north"]
+        },
+        {
+            "coordinates": [
+                1,
+                0
+            ],
+            "description": "The Base Kitchen. The walls show signs of gunfire. It looks like some of the SGC holed up in here.",
+            "chanceOfEnemies": 0.3,
+            "chanceOfLoot": 1,
+            "enemyType": "Jaffa",
+            "lootName": "Jello",
+            "lootAmount": 2,
+            "lootType": "health",
+            "requiredKey": "default",
+            "shopID": 0,
+            "canMove":["north","south"]
+        },
+        {
+            "coordinates": [
+                2,
+                0
+            ],
+            "description": "The Base Cafeteria. The walls show signs of gunfire. It looks like some of the SGC retreated here during the incursion.",
+            "chanceOfEnemies": 0.3,
+            "chanceOfLoot": 0.5,
+            "enemyType": "Jaffa",
+            "lootName": "Med Kit",
+            "lootAmount": 1,
+            "lootType": "health",
+            "requiredKey": "default",
+            "shopID": 0,
+            "canMove":["east","south"]
+        },
+        {
+            "coordinates": [
+                3,
+                0
+            ],
+            "description": "Stargate Guest Quarters. This room seems untouched by the incursion. It looks like there were no guests when the Jaffa arrived.",
+            "chanceOfEnemies": 0.3,
+            "chanceOfLoot": 0.5,
+            "enemyType": "Jaffa",
+            "lootName": "Jello",
+            "lootAmount": 1,
+            "lootType": "health",
+            "requiredKey": "default",
+            "shopID": 0,
+            "canMove":["north","east"]
+        },
+        {
+            "coordinates": [
+                4,
+                0
+            ],
+            "description": "Stargate Guest Quarters Bathroom. You don't know what compelled you to check the toilet but sometimes might find something useful.",
+            "chanceOfEnemies": 1,
+            "chanceOfLoot": 1,
+            "enemyType": "Jaffa",
+            "lootName": "Level 1 Access Card",
+            "lootAmount": 1,
+            "lootType": "key",
+            "requiredKey": "default",
+            "shopID": 0,
+            "canMove":["south"]
+        },
+        {
+            "coordinates": [
+                0,
+                1
+            ],
+            "description": "The Base Gymnasium. The Equipment is wracked with bullet holes and the walls are charred from energy weapon fire. It looks like the Jaffa were here.",
+            "chanceOfEnemies": 0.8,
+            "chanceOfLoot": 0.5,
+            "enemyType": "Jaffa",
+            "lootName": "Med Kit",
+            "lootAmount": 1,
+            "lootType": "health",
+            "requiredKey": "default",
+            "shopID": 0,
+            "canMove":["north"]
+        },
+        {
+            "coordinates": [
+                1,
+                1
+            ],
+            "description": "South West Corridor. The walls are charred and pockmarked from energy weapon and machine gun fire. The floor is covered in a thick layer of dust. You can hear the sounds of battle coming from the east.",
+            "chanceOfEnemies": 0.8,
+            "chanceOfLoot": 0.1,
+            "enemyType": "Jaffa",
+            "lootName": "Med Kit",
+            "lootAmount": 1,
+            "lootType": "health",
+            "requiredKey": "default",
+            "shopID": 0,
+            "canMove":["north","south","east"]
+        },
+        {
+            "coordinates": [
+                2,
+                1
+            ],
+            "description": "West Corridor. The walls are charred and pockmarked from energy weapon and machine gun fire. There are no bodies, that's a good sign",
+            "chanceOfEnemies": 0.8,
+            "chanceOfLoot": 0.1,
+            "enemyType": "Jaffa",
+            "lootName": "Med Kit",
+            "lootAmount": 1,
+            "lootType": "health",
+            "requiredKey": "default",
+            "shopID": 0,
+            "canMove":["north","east","south","west"]
+        },
+        {
+            "coordinates": [
+                3,
+                1
+            ],
+            "description": "North West Stairwell. There are a few Jaffa corpses here. It looks like they were trying to escape.",
+            "chanceOfEnemies": 0.8,
+            "chanceOfLoot": 0.1,
+            "enemyType": "Jaffa",
+            "lootName": "Kevlar Vest",
+            "lootAmount": 1,
+            "lootType": "armour",
+            "requiredKey": "default",
+            "shopID": 0,
+            "canMove":["north","east","south","west"]
+        },
+        {
+            "coordinates": [
+                4,
+                1
+            ],
+            "description": "Dr Daniel Jackson's Office. The walls are charred and pockmarked from energy weapon and machine gun fire. There are a few bodies here. You hope Daniel is ok.",
+            "chanceOfEnemies": 0.1,
+            "chanceOfLoot": 0.1,
+            "enemyType": "Jaffa",
+            "lootName": "Med Kit",
+            "lootAmount": 1,
+            "lootType": "health",
+            "requiredKey": "Level 1 Access Card",
+            "shopID": 1,
+            "canMove":["south"]
+        },
+        {
+            "coordinates": [
+                0,
+                2
+            ],
+            "description": "The Power room for the Stargate. All the power for the gate is routed through here. The walls are charred and pockmarked from energy weapon and machine gun fire. The power delivery equipment is beyond your ability to repair",
+            "chanceOfEnemies": 1,
+            "chanceOfLoot": 0.1,
+            "enemyType": "First Prime",
+            "lootName": "Kevlar Vest",
+            "lootAmount": 1,
+            "lootType": "armour",
+            "requiredKey": "Level 1 Access Card",
+            "shopID": 0,
+            "canMove":["north"]
+        },{
+            "coordinates": [
+                1,
+                2
+            ],
+            "description": "The South Access Corridor. The walls show extensive charing but it looks like it came from the power room to the south instead of weapons fire.",
+            "chanceOfEnemies": 0.8,
+            "chanceOfLoot": 0.5,
+            "enemyType": "Jaffa",
+            "lootName": "Med Kit",
+            "lootAmount": 1,
+            "lootType": "health",
+            "requiredKey": "default",
+            "shopID": 0,
+            "canMove":["east", "south","west"]
+        },
+        {
+            "coordinates": [
+                2,
+                2
+            ],
+            "description": "The embarkation room where the Stargate is housed. The walls are charred and pockmarked from energy weapon and machine gun fire. The floor is covered in a thick layer of dust. The Stargate is in the centre of the room.",
+            "chanceOfEnemies": 0.1,
+            "chanceOfLoot": 0.1,
+            "enemyType": "Jaffa",
+            "lootName": "Dollar",
+            "lootAmount": 10,
+            "lootType": "money",
+            "requiredKey": "default",
+            "shopID": 0,
+            "canMove":["east", "west"]
+        },
+        {
+            "coordinates": [
+                3,
+                2
+            ],
+            "description": "The Control Room. The blast shields are down and the chairs are strewn about the room. It looks like the base self destruct is active. You don't have long to retake the base.",
+            "chanceOfEnemies": 0.8,
+            "chanceOfLoot": 0.8,
+            "enemyType": "Jaffa",
+            "lootName": "Kevlar Vest",
+            "lootAmount": 1,
+            "lootType": "armour",
+            "requiredKey": "Level 1 Access Card",
+            "shopID": 0,
+            "canMove":["north", "east", "west"]
+        },{
+            "coordinates": [
+                4,
+                2
+            ],
+            "description": "The Conference Room. The desk is strewn with papers and the chairs are overturned. The walls are charred and pockmarked from energy weapon and machine gun fire. The floor has a few brave SGC personal laying dead on it.",
+            "chanceOfEnemies": 0.8,
+            "chanceOfLoot": 0.1,
+            "enemyType": "Jaffa",
+            "lootName": "Med Kit",
+            "lootAmount": 1,
+            "lootType": "health",
+            "requiredKey": "default",
+            "shopID": 0,
+            "canMove":["east","south"]
+        },{
+            "coordinates": [
+                0,
+                3
+            ],
+            "description": "The Infirmary. All the beds are empty, it looks like they were able to evacuate the wounded before the lockdown.",
+            "chanceOfEnemies": 0.8,
+            "chanceOfLoot": 0.5,
+            "enemyType": "Jaffa",
+            "lootName": "Med Kit",
+            "lootAmount": 2,
+            "lootType": "armour",
+            "requiredKey": "default",
+            "shopID": 0,
+            "canMove":["north", "east"]
+        },{
+            "coordinates": [
+                1,
+                3
+            ],
+            "description": "The South East Corridor. The walls are charred and pockmarked from energy weapon and machine gun fire. The floor is covered in a thick layer of dust.",
+            "chanceOfEnemies": 0.8,
+            "chanceOfLoot": 0.0,
+            "enemyType": "Jaffa",
+            "lootName": "Kevlar Vest",
+            "lootAmount": 0,
+            "lootType": "armour",
+            "requiredKey": "default",
+            "shopID": 0,
+            "canMove":["north", "east", "south","west"]
+        },{
+            "coordinates": [
+                2,
+                3
+            ],
+            "description": "The East Corridor. There is extensive damage to the walls and floor from energy weapon and machine gun fire. With the armoury to the east this was likely a hot spot for the SGC.",
+            "chanceOfEnemies": 0.5,
+            "chanceOfLoot": 0.5,
+            "enemyType": "Jaffa",
+            "lootName": "Kevlar Vest",
+            "lootAmount": 1,
+            "lootType": "armour",
+            "requiredKey": "default",
+            "shopID": 0,
+            "canMove":["north", "east", "south","west"]
+        },{
+            "coordinates": [
+                3,
+                3
+            ],
+            "description": "The North East Stairwell. The walls are charred and pockmarked from energy weapon and machine gun fire. There is a sandbagged location here¿someone must have used this as a nest to protect the Control room.",
+            "chanceOfEnemies": 0.6,
+            "chanceOfLoot": 0.5,
+            "enemyType": "Jaffa",
+            "lootName": "Med Kit",
+            "lootAmount": 1,
+            "lootType": "health",
+            "requiredKey": "default",
+            "shopID": 0,
+            "canMove":["east", "south","west"]
+        },{
+            "coordinates": [
+                4,
+                3
+            ],
+            "description": "General Hammond's office. The walls are charred and pockmarked from energy weapon and machine gun fire. The desk is strewn with papers and the chair is overturned. The floor is covered in a thick layer of dust. Its likely Hammond is being held here.",
+            "chanceOfEnemies": 1,
+            "chanceOfLoot": 0.1,
+            "enemyType": "Goa'uld",
+            "lootName": "Kevlar Vest",
+            "lootAmount": 1,
+            "lootType": "armour",
+            "requiredKey": "Level 2 Access Card",
+            "shopID": 0,
+            "canMove":["west"]
+        },{
+            "coordinates": [
+                0,
+                4
+            ],
+            "description": "Infirmary Stores. Looking around you can scrounge up some supplies in here.",
+            "chanceOfEnemies": 0.6,
+            "chanceOfLoot": 0.1,
+            "enemyType": "Jaffa",
+            "lootName": "Kevlar Vest",
+            "lootAmount": 1,
+            "lootType": "armour",
+            "requiredKey": "Level 1 Access Card",
+            "shopID": 3,
+            "canMove":["west"]
+        },{
+            "coordinates": [
+                1,
+                4
+            ],
+            "description": "The Base Recreation Room. The games and activities are all still here, but the room is in disarray. Your favourite pinball machine seems to be the only causality.",
+            "chanceOfEnemies": 0.6,
+            "chanceOfLoot": 0.5,
+            "enemyType": "Jaffa",
+            "lootName": "Jello",
+            "lootAmount": 3,
+            "lootType": "health",
+            "requiredKey": "default",
+            "shopID": 0,
+            "canMove":["west"]
+        },{
+            "coordinates": [
+                2,
+                4
+            ],
+            "description": "The Base Armoury. The room is mostly empty, but you can find a few weapons and ammo here.",
+            "chanceOfEnemies": 0.9,
+            "chanceOfLoot": 0.5,
+            "enemyType": "Jaffa",
+            "lootName": "Med Kit",
+            "lootAmount": 2,
+            "lootType": "health",
+            "requiredKey": "Level 1 Access Card",
+            "shopID": 1,
+            "canMove":["west"]
+        },{
+            "coordinates": [
+                3,
+                4
+            ],
+            "description": "Captain Carters Lab. This room seems pretty unscathed but there is no sign of Carter.",
+            "chanceOfEnemies": 0.1,
+            "chanceOfLoot": 0.5,
+            "enemyType": "Jaffa",
+            "lootName": "Jello",
+            "lootAmount": 3,
+            "lootType": "health",
+            "requiredKey": "Level 2 Access Card",
+            "shopID": 0,
+            "canMove":["north", "west"]
+        },{
+            "coordinates": [
+                4,
+                4
+            ],
+            "description": "Captain Carters Store room. This room seems pretty unscathed but there is no sign of Carter. You might be able to find some supplies here.",
+            "chanceOfEnemies": 0.1,
+            "chanceOfLoot": 0.1,
+            "enemyType": "Jaffa",
+            "lootName": "Jello",
+            "lootAmount": 3,
+            "lootType": "health",
+            "requiredKey": "default",
+            "shopID": 2,
+            "canMove":["south"]
+        }
+    ]
+}
