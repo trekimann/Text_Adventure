@@ -19,7 +19,7 @@ class Character:
         print(f"{self.name} attacks for {tc.colour('red')}{damage}{tc.colour()} points of damage.")
         return damage
 
-    def take_damage(self, damage):
+    def take_damage(self, damage, attacking_weapon: src.Weapon = None):
         if self.armour > 0:
             # Calculate the amount of damage that the armour absorbs
             absorbed_damage = round(random.uniform(0.1, 1),2)

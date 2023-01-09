@@ -56,8 +56,8 @@ class Battle:
     def combat(self):
         # deal with the fight here
         damage_dealt_player = self.player.attack()
-        self.enemy.take_damage(damage_dealt_player)
+        self.enemy.take_damage(damage_dealt_player, self.player.weapon)
         if not self.enemy.is_dead():
             damage_dealt_enemy = self.enemy.attack()
-            self.player.take_damage(damage_dealt_enemy)
+            self.player.take_damage(damage_dealt_enemy, self.enemy.weapon)
                 
