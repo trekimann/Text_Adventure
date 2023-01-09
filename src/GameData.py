@@ -75,18 +75,34 @@ class GameData:
 
             # Enemy Options
             for enemy_options in data["enemies"]:
-              enemy = src.Enemy(
-                enemy_type = enemy_options['enemyType'],
-                name = enemy_options['name'],
-                description = enemy_options['description'],
-                health = enemy_options['health'],
-                loot_chance = enemy_options['loot_chance'],
-                loot = self.item_options[enemy_options['loot']],
-                damage_resistance_multiplier = enemy_options['damage_resistance_multiplier'],
-                attack_multiplier = enemy_options['attack_multiplier'],
-                loot_amount = enemy_options['lootAmount'],
-                weapon=self.item_options[enemy_options['weapon']],
-              )
+              if enemy_options['boss'] == True:
+                enemy = src.Boss(
+                  enemy_type = enemy_options['enemyType'],
+                  name = enemy_options['name'],
+                  description = enemy_options['description'],
+                  health = enemy_options['health'],
+                  loot_chance = enemy_options['loot_chance'],
+                  loot = self.item_options[enemy_options['loot']],
+                  damage_resistance_multiplier = enemy_options['damage_resistance_multiplier'],
+                  attack_multiplier = enemy_options['attack_multiplier'],
+                  loot_amount = enemy_options['lootAmount'],
+                  weapon=self.item_options[enemy_options['weapon']],
+                  weak_against=self.item_options[enemy_options['weakAgainst']],
+                  weakness_multiplier=enemy_options['weaknessMultiplier'],
+                )
+              else:
+                enemy = src.Enemy(
+                  enemy_type = enemy_options['enemyType'],
+                  name = enemy_options['name'],
+                  description = enemy_options['description'],
+                  health = enemy_options['health'],
+                  loot_chance = enemy_options['loot_chance'],
+                  loot = self.item_options[enemy_options['loot']],
+                  damage_resistance_multiplier = enemy_options['damage_resistance_multiplier'],
+                  attack_multiplier = enemy_options['attack_multiplier'],
+                  loot_amount = enemy_options['lootAmount'],
+                  weapon=self.item_options[enemy_options['weapon']],
+                )
               self.enemy_options[enemy.enemy_type]=enemy
             # map grid details
             for square_data in data['mapSquares']:

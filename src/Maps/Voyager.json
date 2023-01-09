@@ -124,6 +124,22 @@
             "damageModifier": 1
         },
         {
+            "itemType": "weapon",
+            "name": "IMod",
+            "weight": 3,
+            "value": 100,
+            "cost": 1000,
+            "multiplier": 0,
+            "description": "A powerful handheld energy weapon developed by 7 of 9 to fight the borg",
+            "equippable": true,
+            "equipped": false,
+            "colour": "yellow",
+            "healthRecovery": 0,
+            "damageRangeMin": 3,
+            "damageRangeMax": 5,
+            "damageModifier": 1
+        },
+        {
             "itemType": "key",
             "name": "Access Card",
             "weight": 0.0,
@@ -174,7 +190,9 @@
             "loot": "None",
             "lootAmount": 0,
             "damage_resistance_multiplier": 0.1,
-            "attack_multiplier": 0.1
+            "attack_multiplier": 0.1,
+            "boss": false,
+            "weapon": "None"
         },
         {
             "enemyType": "Borg",
@@ -185,7 +203,9 @@
             "loot": "Federation Credit",
             "lootAmount": 100,
             "damage_resistance_multiplier": 1.5,
-            "attack_multiplier": 1.5
+            "attack_multiplier": 1.5,
+            "weapon": "Hand Phaser",
+            "boss": false
         },
         {
             "enemyType": "Borg",
@@ -199,7 +219,8 @@
             "attack_multiplier": 5.0,
             "boss": true,
             "weakAgainst": "IMod",
-            "weaknessMultiplier": 0.3
+            "weaknessMultiplier": 0.3,
+            "weapon": "Hand Phaser"
         },
         {
             "enemyType": "Kazon",
@@ -210,7 +231,9 @@
             "loot": "Federation Credit",
             "lootAmount": 10,
             "damage_resistance_multiplier": 1.5,
-            "attack_multiplier": 1.2
+            "attack_multiplier": 1.2,
+            "weapon": "Hand Phaser",
+            "boss": false
         },
         {
             "enemyType": "8472",
@@ -221,7 +244,9 @@
             "lootAmount": 2,
             "loot": "Gold-Pressed Latinum",
             "damage_resistance_multiplier": 1.5,
-            "attack_multiplier": 2.0
+            "attack_multiplier": 3.0,
+            "weapon": "Hand Phaser",
+            "boss": false
         }
     ],
     "mapSquares": [
