@@ -99,6 +99,7 @@ class GameData:
                     enemy_options=self.enemy_options[square_data['enemyType']],
                     key=square_data['requiredKey'],
                     shop_ID=square_data['shopID'],
+                    available_directions=square_data['canMove'],
                 )
                 if square.shop_ID !=0:
                   square.shop = self.store_options[square.shop_ID]

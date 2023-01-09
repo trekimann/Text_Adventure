@@ -238,7 +238,8 @@
             "lootAmount": 10,
             "lootType": "money",
             "requiredKey": "default",
-            "shopID": 0
+            "shopID": 0,
+            "canMove": ["north", "east", "south", "west"]
         },
         {
             "coordinates": [
@@ -253,7 +254,8 @@
             "lootAmount": 0,
             "lootType": "health",
             "requiredKey": "default",
-            "shopID": 2
+            "shopID": 2,
+            "canMove": ["north", "east", "south", "west"]
         },
         {
             "coordinates": [
@@ -268,7 +270,8 @@
             "lootAmount": 1,
             "lootType": "money",
             "requiredKey": "default",
-            "shopID": 0
+            "shopID": 0,
+            "canMove": ["north", "east", "south", "west"]
         },
         {
             "coordinates": [
@@ -283,7 +286,8 @@
             "lootAmount": 1,
             "lootType": "health",
             "requiredKey": "default",
-            "shopID": 0
+            "shopID": 0,
+            "canMove": ["north", "east", "south", "west"]
         },
         {
             "coordinates": [
@@ -298,7 +302,8 @@
             "lootAmount": 1,
             "lootType": "key",
             "requiredKey": "default",
-            "shopID": 0
+            "shopID": 0,
+            "canMove": ["north", "east", "south", "west"]
         },
         {
             "coordinates": [
@@ -313,7 +318,8 @@
             "lootAmount": 1000,
             "lootType": "money",
             "requiredKey": "default",
-            "shopID": 0
+            "shopID": 0,
+            "canMove": ["north", "east", "south", "west"]
         },
         {
             "coordinates": [
@@ -328,7 +334,8 @@
             "lootAmount": 1,
             "lootType": "weapon",
             "requiredKey": "Access Card",
-            "shopID": 0
+            "shopID": 0,
+            "canMove": ["north", "east", "south", "west"]
         },
         {
             "coordinates": [
@@ -343,7 +350,8 @@
             "lootAmount": 1,
             "lootType": "money",
             "requiredKey": "default",
-            "shopID": 0
+            "shopID": 0,
+            "canMove": ["north", "east", "south", "west"]
         },
         {
             "coordinates": [
@@ -358,7 +366,8 @@
             "lootAmount": 1,
             "lootType": "health",
             "requiredKey": "default",
-            "shopID": 1
+            "shopID": 1,
+            "canMove": ["north", "east", "south", "west"]
         }
     ]
 }

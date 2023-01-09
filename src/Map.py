@@ -33,6 +33,7 @@ class Map:
       if self.viable_grid(x,y):
         # Get the map square at the given coordinates
         map_square = self.map_squares[(x,y)]
+        
         # Check if the player has a key
         if map_square.key in keys.keys():
           if map_square.key != "default":
@@ -64,16 +65,22 @@ class Map:
       
     def try_to_move(self, direction, x, y):
       # try to move the player in this direction.
-      if direction == "north":
-        x = x + 1
-      elif direction == "east":
-        y = y + 1
-      elif direction == "south":
-        x = x - 1
-      elif direction == "west":
-        y = y - 1
+      # get the map square that the player is currently on
+      map_square = self.map_squares[(x,y)]
+      # check if the player can move in this direction
+      if direction in map_square.available_directions:
+        if direction == "north":
+          x = x + 1
+        elif direction == "east":
+          y = y + 1
+        elif direction == "south":
+          x = x - 1
+        elif direction == "west":
+          y = y - 1
+        else:
+          print(direction + "is not valid for moving")
       else:
-        print(direction + "is not valid for moving")
+        print(f"You cannot move in that direction. You can move in the following directions: {map_square.available_directions}")
       return x,y
 
     def read_map(self):

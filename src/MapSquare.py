@@ -3,7 +3,7 @@ import src
 
 tc = src.TC()
 class MapSquare:
-    def __init__(self, description, enemy_chance, loot_chance, enemy_type, enemy_options, loot: src.Item, loot_amount = 1, key = None, shop_ID = False, shop = None):
+    def __init__(self, description, enemy_chance, loot_chance, enemy_type, enemy_options, loot: src.Item, loot_amount = 1, key = None, shop_ID = False, shop = None, available_directions = ["north", "east", "south", "west"]):
         self.description = description
         self.enemy_chance = enemy_chance
         self.loot_chance = loot_chance
@@ -15,6 +15,7 @@ class MapSquare:
         self.key = key
         self.shop_ID = shop_ID
         self.shop:src.Shop = shop
+        self.available_directions = available_directions
 
     def has_shop(self):
         return self.shop != None
