@@ -125,6 +125,8 @@ class GameData:
             # Player starting Details 
             self.player_data['starting_location']=(data['playerData']['startingX'],data['playerData']['startingY'])
             self.player_data['starting_health']=data['playerData']['startingHealth']
+            self.player_data['maximum_health']=data['playerData']['maximumHealth']
+            self.player_data['maximum_armour']=data['playerData']['maximumArmour']
             self.player_data['starting_armour']=data['playerData']['startingArmour']
             self.player_data['starting_weapon']=self.item_options[data['playerData']['startingWeapon']]
             self.player_data['starting_carry_weight']=data['playerData']['startingCarryWeight']

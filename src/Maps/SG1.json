@@ -11,7 +11,9 @@
         "startingHealth": 25,
         "startingArmour": 30,
         "startingWeapon": "M9",
-        "startingCarryWeight": 10
+        "startingCarryWeight": 10,
+        "maximumHealth": 35,
+        "maximumArmour": 35
     },
     "items": [
         {
@@ -162,8 +164,8 @@
             "equipped": false,
             "colour": "yellow",
             "healthRecovery": 0,
-            "damageRangeMin": 1,
-            "damageRangeMax": 3,
+            "damageRangeMin": 2,
+            "damageRangeMax": 5,
             "damageModifier": 1
         },
         {
@@ -178,8 +180,8 @@
             "equipped": false,
             "colour": "yellow",
             "healthRecovery": 0,
-            "damageRangeMin": 3,
-            "damageRangeMax": 6,
+            "damageRangeMin": 4,
+            "damageRangeMax": 7,
             "damageModifier": 1
         },
         {
@@ -292,7 +294,7 @@
             "attack_multiplier": 1,
             "boss": true,
             "weakAgainst": "Staff Weapon",
-            "weaknessMultiplier": 0.6
+            "weaknessMultiplier": 2
         },{
             "enemyType": "First Prime",
             "name": "Jaffa First Prime",
@@ -307,7 +309,7 @@
             "attack_multiplier": 1,
             "boss": true,
             "weakAgainst": "Zat",
-            "weaknessMultiplier": 0.6
+            "weaknessMultiplier": 2
         }
     ],
     "mapSquares": [

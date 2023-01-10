@@ -43,6 +43,10 @@ class TextAdventureGame:
       self.player.add_to_inventory(self.game_data.player_data['starting_weapon'])
     if self.game_data.player_data['starting_armour'] != None:
       self.player.armour = self.game_data.player_data['starting_armour']
+    if self.game_data.player_data['maximum_armour'] != None:
+      self.player.max_armour = self.game_data.player_data['maximum_armour']
+    if self.game_data.player_data['maximum_health'] != None:
+      self.player.max_health = self.game_data.player_data['maximum_health']
     if self.game_data.player_data['starting_health'] != None:
       self.player.health = self.game_data.player_data['starting_health']
     if self.game_data.player_data['starting_carry_weight'] != None:

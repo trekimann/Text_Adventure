@@ -88,8 +88,8 @@ class Player(src.Character):
         return False
 
     item = self.inventory[item_name]['item']
-    if item.equipped:
-      print(f"You cant remove an equipped item")
+    if item.equipped and (self.inventory[item_name]['count'] == count or self.inventory[item_name]['count'] == 1):
+      print(f"You can't remove an equipped item")
       return False
 
     self.inventory[item_name]['count'] -= count
@@ -121,6 +121,12 @@ class Player(src.Character):
         thing = self.inventory[item_name]['item']
         print(f"   {tc.colour(thing.item_colour)}{item_name}{tc.colour()} ({thing.weight}kg each) x{self.inventory[thing.name]['count']}")
         print(f"      "+thing.description)
+        if thing.type == "weapon":
+          print(f"      Damage: {thing.damage_range[0]}-{thing.damage_range[1]}")
+        if thing.type == "armour":
+          print(f"      Restores: {thing.health_recovery} armour")
+        if thing.type == "health":
+          print(f"      Restores: {thing.health_recovery} health")
     print("Keys:")
     for key_name in self.keys:
       if key_name != "default":
@@ -163,11 +169,13 @@ class Player(src.Character):
       if self.inventory[choice]['count'] >= amount:
         for _ in range(amount):
           if item.type == "weapon":
-            self.equip_weapon(item)
+            self.equip_weapon(item)            
           elif item.type == "health":
-            self.use_health_item(item)
+            if self.use_health_item(item) == False:
+              break
           elif item.type == "armour":
-            self.use_armour_item(item)
+            if self.use_armour_item(item) == False:
+              break
         print("---------------")
       else:
         print(f"You only have {self.inventory[choice]['count']} of {choice}")
@@ -180,8 +188,10 @@ class Player(src.Character):
       if self.inventory[item.name]['count'] == 0:
         print(f"All {tc.colour(item.item_colour)}{item.name}{tc.colour()} used")
         del self.inventory[item.name]
+      return True
     else:
       print(f"Using {tc.colour(item.item_colour)}{item.name}{tc.colour()} would put you over the maximum armour of {tc.colour('blue')}{self.max_health}{tc.colour()}")
+      return False
 
   def use_health_item(self, item):
     if self.health+item.health_recovery <= self.max_health:
@@ -191,8 +201,10 @@ class Player(src.Character):
         print(f"All {tc.colour(item.item_colour)}{item.name}{tc.colour()} used")
         del self.inventory[item.name]
       print(f"{tc.colour(item.item_colour)}{item.name}{tc.colour()} used. Health recovered by {item.health_recovery}.")
+      return True
     else:
       print(f"Using {tc.colour(item.item_colour)}{item.name}{tc.colour()} would put you over the maximum health of {tc.colour('green')}{self.max_health}{tc.colour()}")
+      return False
 
   def get_location(self):
     # return the current location of the player
