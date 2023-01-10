@@ -1,4 +1,3 @@
-import random
 import src
 
 tc = src.TC()
@@ -17,3 +16,6 @@ class Boss(src.Enemy):
         loot_amount=loot_amount,
         weak_against=weak_against,
         weakness_multiplier=weakness_multiplier)
+
+    def reset(self):
+        pass
