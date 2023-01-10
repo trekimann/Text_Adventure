@@ -22,7 +22,7 @@ class Shop:
                 print(f"      Paid each: {tc.colour('yellow')}{product.value}{tc.colour()}")
                 if product.type in ('health', 'armour'):
                     print(f"      Recovers {tc.colour(product.item_colour)}{product.health_recovery}{tc.colour()} hit points")
-            print(f"      {product.description}")
+                print(f"      {product.description}")
             print(f"Do you want to buy something?")
             choice = input("Yes or No: ")
             if choice.lower().startswith('y'):
@@ -34,8 +34,7 @@ class Shop:
                     if item_number <= int(self.shop_items[item_name]['stock']):
                         total = (product.cost * self.cost_multiplier) * item_number
                         if player.wallet_value() >= total :                            
-                            self.sell_to_player(player, item_name, item_number)
-                            break
+                            self.sell_to_player(player, item_name, item_number)                            
                         else:
                             print(f"You have {player.wallet_value()}, you need {total} for this transaction")
                     else:
@@ -90,14 +89,17 @@ class Shop:
 
     def sell_to_player(self, player: src.Player, item_name, item_number):
         product = self.shop_items[item_name][item_name]
-        total_cost = (product.cost * self.cost_multiplier) * item_number
-        player.wallet.pay_money(total_cost, self.wallet)
+        sold = 0
         for _ in range(item_number):
             if player.get_inventory_weight() + product.weight > player.max_inventory_weight:
                 print(f"Not enough inventory weight for this item")
                 break
             player.add_to_inventory(product)
-        self.shop_items[item_name]['stock'] -= item_number
+            sold += 1
+        self.shop_items[item_name]['stock'] -= sold
         if self.shop_items[item_name]['stock'] == 0:
             del self.shop_items[item_name]
-        print(f"You bought {item_number} {item_name} for {total_cost}")
+        total_cost = (product.cost * self.cost_multiplier) * sold
+        player.wallet.pay_money(total_cost, self.wallet)
+        print(f"You bought {sold} {item_name} for {total_cost}")
+        return True
