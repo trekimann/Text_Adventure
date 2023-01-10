@@ -22,12 +22,12 @@ class Character:
         return damage
 
     def take_damage(self, damage, attacking_weapon: src.Weapon = None):
-        if attacking_weapon.name == self.weak_against:
+        if attacking_weapon == self.weak_against:
             damage *= self.weakness_multiplier
             print(f"{self.name} is weak against {attacking_weapon.name}! {tc.colour('red')}{damage}{tc.colour()} damage dealt!")
         if self.armour > 0:
             # Calculate the amount of damage that the armour absorbs
-            absorbed_damage = round(random.uniform(0.1, 1),2)
+            absorbed_damage = round(random.uniform(0.5, 2),2)
             print(f"{self.name}'s armour absorbs {tc.colour('blue')}{absorbed_damage}{tc.colour()} points of damage")
             # Reduce the armour's hit points by the absorbed damage
             if absorbed_damage > damage:
