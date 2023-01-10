@@ -58,13 +58,17 @@ class MapSquare:
                         picked_up = player.add_to_inventory(self.loot)
                         if not picked_up:
                             print(f"Unable to collect {self.loot.name}")
-                            break
+                            return lootable
                         else:
                             self.loot_amount -= 1
                     else:
                         print(f"Loot depleted")
                         break
                 action_loop = False
+                if self.loot.type != "key":
+                    action = input(f"Do you want to use the {self.loot.name} now? (Yes or No): ").lower()
+                    if action.startswith("y"):
+                        player.use_item()
                 return lootable
                 
             elif action == "3":
