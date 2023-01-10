@@ -33,7 +33,7 @@ class Shop:
                     product = self.shop_items[item_name][item_name]
                     if item_number <= int(self.shop_items[item_name]['stock']):
                         total = (product.cost * self.cost_multiplier) * item_number
-                        if player.wallet_value() >= total:                            
+                        if player.wallet_value() >= total :                            
                             self.sell_to_player(player, item_name, item_number)
                             break
                         else:
@@ -93,6 +93,9 @@ class Shop:
         total_cost = (product.cost * self.cost_multiplier) * item_number
         player.wallet.pay_money(total_cost, self.wallet)
         for _ in range(item_number):
+            if player.get_inventory_weight() + product.weight > player.max_inventory_weight:
+                print(f"Not enough inventory weight for this item")
+                break
             player.add_to_inventory(product)
         self.shop_items[item_name]['stock'] -= item_number
         if self.shop_items[item_name]['stock'] == 0:

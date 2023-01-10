@@ -12,6 +12,8 @@ class Player(src.Character):
 
     self.inventory = {}
     self.max_inventory_weight = 25
+    self.max_health = 30
+    self.max_armour = 30
     self.current_location = current_location
     self.kills = 0
     self.bestiary = {}
@@ -171,20 +173,26 @@ class Player(src.Character):
         print(f"You only have {self.inventory[choice]['count']} of {choice}")
 
   def use_armour_item(self, item):
-    self.armour += item.health_recovery
-    self.inventory[item.name]['count'] -= 1
-    print(f"{tc.colour(item.item_colour)}{item.name}{tc.colour()} used. Armour recovered by {item.health_recovery}.")
-    if self.inventory[item.name]['count'] == 0:
-      print(f"All {tc.colour(item.item_colour)}{item.name}{tc.colour()} used")
-      del self.inventory[item.name]
+    if self.armour+item.health_recovery <= self.max_armour:
+      self.armour += item.health_recovery
+      self.inventory[item.name]['count'] -= 1
+      print(f"{tc.colour(item.item_colour)}{item.name}{tc.colour()} used. Armour recovered by {item.health_recovery}.")
+      if self.inventory[item.name]['count'] == 0:
+        print(f"All {tc.colour(item.item_colour)}{item.name}{tc.colour()} used")
+        del self.inventory[item.name]
+    else:
+      print(f"Using {tc.colour(item.item_colour)}{item.name}{tc.colour()} would put you over the maximum armour of {tc.colour('blue')}{self.max_health}{tc.colour()}")
 
   def use_health_item(self, item):
-    self.health += item.health_recovery
-    self.inventory[item.name]['count'] -= 1
-    if self.inventory[item.name]['count'] == 0:
-      print(f"All {tc.colour(item.item_colour)}{item.name}{tc.colour()} used")
-      del self.inventory[item.name]
-    print(f"{tc.colour(item.item_colour)}{item.name}{tc.colour()} used. Health recovered by {item.health_recovery}.")
+    if self.health+item.health_recovery <= self.max_health:
+      self.health += item.health_recovery
+      self.inventory[item.name]['count'] -= 1
+      if self.inventory[item.name]['count'] == 0:
+        print(f"All {tc.colour(item.item_colour)}{item.name}{tc.colour()} used")
+        del self.inventory[item.name]
+      print(f"{tc.colour(item.item_colour)}{item.name}{tc.colour()} used. Health recovered by {item.health_recovery}.")
+    else:
+      print(f"Using {tc.colour(item.item_colour)}{item.name}{tc.colour()} would put you over the maximum health of {tc.colour('green')}{self.max_health}{tc.colour()}")
 
   def get_location(self):
     # return the current location of the player

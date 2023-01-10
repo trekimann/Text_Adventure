@@ -4,7 +4,7 @@ import src
 tc = src.TC()
 
 class Character:
-    def __init__(self, name, description, health, armour, weapon: src.Weapon = None, damage_resistance_multiplier = 1, attack_multiplier = 1):
+    def __init__(self, name, description, health, armour, weapon: src.Weapon = None, damage_resistance_multiplier = 1, attack_multiplier = 1, weak_against = "None", weakness_multiplier = 1):
         self.name = name
         self.description = description
         self.health = health
@@ -12,6 +12,8 @@ class Character:
         self.weapon = weapon
         self.damage_resistance_multiplier = damage_resistance_multiplier
         self.attack_multiplier = attack_multiplier
+        self.weak_against = weak_against
+        self.weakness_multiplier = weakness_multiplier
     
     def attack(self):
         # Calculate the damage dealt to the character
@@ -20,6 +22,9 @@ class Character:
         return damage
 
     def take_damage(self, damage, attacking_weapon: src.Weapon = None):
+        if attacking_weapon.name == self.weak_against:
+            damage *= self.weakness_multiplier
+            print(f"{self.name} is weak against {attacking_weapon.name}! {tc.colour('red')}{damage}{tc.colour()} damage dealt!")
         if self.armour > 0:
             # Calculate the amount of damage that the armour absorbs
             absorbed_damage = round(random.uniform(0.1, 1),2)

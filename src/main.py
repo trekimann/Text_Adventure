@@ -112,6 +112,7 @@ class TextAdventureGame:
     # Display location description
     print(f"Current Location: X:{x} Y:{y}")
     print(location.description)
+    print(f"You can go :{location.available_directions}")
     if location.has_shop() and from_instructions:
       print(f"There is a shop here. Do you want to use it?")
       choice = input("Yes or No?: ")

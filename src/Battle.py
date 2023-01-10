@@ -49,7 +49,7 @@ class Battle:
                 else:
                     # Flee unsuccessful
                     print(f"You failed to flee from the {self.enemy.name}!")
-                    self.player.take_damage(self.enemy.attack())
+                    self.player.take_damage(self.enemy.attack(), self.enemy.weapon)
             else:
                 print("Invalid choice.")
 
