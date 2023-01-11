@@ -70,13 +70,13 @@ class Map:
       # check if the player can move in this direction
       if direction in map_square.available_directions:
         if direction == "north":
-          x = x + 1
-        elif direction == "east":
           y = y + 1
+        elif direction == "east":
+          x = x + 1
         elif direction == "south":
-          x = x - 1
-        elif direction == "west":
           y = y - 1
+        elif direction == "west":
+          x = x - 1
         else:
           print(direction + "is not valid for moving")
       else:

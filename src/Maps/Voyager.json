@@ -10,7 +10,10 @@
         "startingY": 2,
         "startingHealth": 10,
         "startingArmour": 10,
-        "startingWeapon": "Hand Phaser"
+        "startingWeapon": "Hand Phaser",
+        "startingCarryWeight": 10,
+        "maximumHealth": 35,
+        "maximumArmour": 35
     },
     "items": [
         {
@@ -268,8 +271,8 @@
         },
         {
             "coordinates": [
-                0,
-                1
+                1,
+                0
             ],
             "description": "Open space",
             "chanceOfEnemies": 0,
@@ -284,8 +287,8 @@
         },
         {
             "coordinates": [
-                0,
-                2
+                2,
+                0
             ],
             "description": "A swirling nebula fills the area, making it difficult to see. The glowing gases create an ethereal atmosphere, but danger lurks within as there is a low chance of encountering a species 8472.",
             "chanceOfEnemies": 0.1,
@@ -300,8 +303,8 @@
         },
         {
             "coordinates": [
-                1,
-                0
+                0,
+                1
             ],
             "description": "A Kazon planet, known for their aggression and hostility towards other species",
             "chanceOfEnemies": 0.9,
@@ -332,8 +335,8 @@
         },
         {
             "coordinates": [
-                1,
-                2
+                2,
+                1
             ],
             "description": "A mysterious nebula fills the sky, swirling with all the colors of the rainbow. The gases and particles are so dense that they obscure most of the stars and celestial bodies, making navigation in this region treacherous. Strange energy readings and anomalies have been reported in this area, leading some to believe that it may be home to unknown life forms or hidden technologies.",
             "chanceOfEnemies": 0.5,
@@ -348,8 +351,8 @@
         },
         {
             "coordinates": [
-                2,
-                0
+                0,
+                2
             ],
             "description": "An abandoned Federation shuttle sits on the surface of the planet. It looks like it has been there for some time, with the paint starting to fade and some parts showing signs of damage. You approach the shuttle and see that the door is slightly open, beckoning you to enter. As you step inside, you can see that the interior of the shuttle is in disarray, with equipment and supplies scattered across the floor. It looks like there was a struggle here at some point. You wonder what could have happened to the crew and what secrets the shuttle might hold.",
             "chanceOfEnemies": 0,
@@ -364,8 +367,8 @@
         },
         {
             "coordinates": [
-                2,
-                1
+                1,
+                2
             ],
             "description": "A rift into fluidic space. You approach a strange, shimmering rift in the fabric of space. As you get closer, you can feel the energy emanating from it, pulsing with an otherworldly power. You hesitate for a moment, wondering if it would be wise to venture any closer. But your curiosity gets the better of you, and you decide to take a closer look. As you scan the rift, you see swirling currents of energy, swirling and churning in an endless dance.",
             "chanceOfEnemies": 0.9,

@@ -1,13 +1,19 @@
 {
   "name": "Enchanted Forest",
   "size": {
-    "width": 2,
+    "width": 3,
     "height": 2
   },
-  "mapDescription":"An enchanted Forest made up of an orc Fortress, spooky Cave, players home and a Wizards armoury.",
+  "mapDescription":"The Enchanted Forest is a mystical and mysterious place, teeming with all manner of strange and dangerous creatures. The forest is split into four main areas, each with its own unique characteristics and dangers. The first area is the Orc Fortress, a sturdy and imposing structure made of crude stone and iron, home to the fierce and brutish orcs. The second area is the Spooky Cave, a dark and foreboding cavern filled with twisted tunnels and eerie echoes. The third area is the player's home, a humble abode nestled deep in the heart of the forest, where the player can rest and recover from their adventures. The final area is the Wizard's Armoury, a hidden and magical armory filled with powerful weapons and ancient artifacts, protected by a powerful magic key. Each of these areas presents its own unique challenges, as well as its own opportunities for treasure and glory. The player must navigate the perils of the Enchanted Forest, using their wits and skill to defeat the fierce creatures that lurk in its shadows, in order to uncover the secrets of the Wizard's Armoury.",
   "playerData": {
     "startingX": 0,
-    "startingY": 0
+    "startingY": 0,
+    "startingHealth": 25,
+    "startingArmour": 30,
+    "startingWeapon": "Rusty Sword",
+    "startingCarryWeight": 10,
+    "maximumHealth": 35,
+    "maximumArmour": 35
   },
   "items": [
     {
@@ -66,6 +72,22 @@
       "damageModifier": 1
     },
     {
+      "itemType": "weapon",
+      "name": "Rusty Sword",
+      "weight": 1.0,
+      "value": 10,
+      "cost": 15,
+      "multiplier": 0,
+      "description": "A Rusty Sword, should be ok against many things.",
+      "equippable": true,
+      "equipped": false,
+      "colour": "brown",
+      "healthRecovery": 0,
+      "damageRangeMin": 0.1,
+      "damageRangeMax": 1,
+      "damageModifier": 1
+    },
+    {
       "itemType": "money",
       "name": "Gold Coins",
       "weight": 0.01,
@@ -92,6 +114,19 @@
       "healthRecovery": 0
     }
   ],
+  "storeItems": [
+      {
+          "shopID": 1,
+          "shopCost": 1,
+          "shopItems": {
+              "Apple": 50
+          },
+          "shopWallet": {
+              "Gold Coins": 1000,
+              "Jewellery": 1000
+          }
+      }
+  ],
   "enemies": [
     {
       "enemyType": "None",
@@ -99,10 +134,14 @@
       "description": "None",
       "health": 0,
       "loot_chance": 0,
+      "loot_type": "",
       "loot": "None",
+      "lootAmount": 0,
       "damage_resistance_multiplier": 0.1,
-      "attack_multiplier": 0.1
-    },
+      "attack_multiplier": 0.1,
+      "boss": false,
+      "weapon": "None"
+  },
     {
       "enemyType": "Goblin",
       "name": "Goblin",
@@ -110,8 +149,11 @@
       "health": 8,
       "loot_chance": 0.1,
       "loot": "None",
+      "lootAmount": 0,
       "damage_resistance_multiplier": 1.2,
-      "attack_multiplier": 1.1
+      "attack_multiplier": 1.1,
+      "boss": false,
+      "weapon": "Rusty Sword"
     },
     {
       "enemyType": "Skeleton",
@@ -120,8 +162,11 @@
       "health": 5,
       "loot_chance": 1,
       "loot": "Magic Key",
+      "lootAmount": 1,
       "damage_resistance_multiplier": 0.8,
-      "attack_multiplier": 0.8
+      "attack_multiplier": 0.8,
+      "boss": false,
+      "weapon": "Rusty Sword"
     },
     {
       "enemyType": "Orc",
@@ -130,9 +175,28 @@
       "health": 15,
       "loot_chance": 0.1,
       "loot": "None",
+      "lootAmount": 0,
       "damage_resistance_multiplier": 2,
-      "attack_multiplier": 1.5
-    }
+      "attack_multiplier": 1.5,
+      "boss": false,
+      "weapon": "Rusty Sword"
+    },
+    {
+      "enemyType": "Dragon",
+      "name": "Giant Dragon",
+      "description": "A giant dragon that guards the Enchanted Forest, its scaly hide is impenetrable to most weapons, but it is vulnerable to magic.",
+      "health": 100,
+      "loot_chance": 0.5,
+      "weapon": "Rusty Sword",
+      "lootType": "money",
+      "loot": "Jewellery",
+      "lootAmount": 1000,
+      "damage_resistance_multiplier": 1,
+      "attack_multiplier": 10,
+      "boss": true,
+      "weakAgainst": "Magic Staff",
+      "weaknessMultiplier": 5
+  }
   ],
   "mapSquares": [
     {
@@ -147,7 +211,9 @@
       "lootName": "Apple",
       "lootAmount": 1,
       "lootType": "health",
-      "requiredKey": "default"
+      "requiredKey": "default",
+      "shopID": 1,
+      "canMove":["north", "east"]
     },
     {
       "coordinates": [
@@ -161,7 +227,9 @@
       "lootType": "money",
       "lootName": "Gold Coins",
       "lootAmount": 100,
-      "requiredKey": "default"
+      "requiredKey": "default",
+      "shopID": 0,
+      "canMove":["north", "west"]
     },
     {
       "coordinates": [
@@ -175,7 +243,9 @@
       "lootType": "money",
       "lootName": "Jewellery",
       "lootAmount": 10,
-      "requiredKey": "default"
+      "requiredKey": "default",
+      "shopID": 0,
+      "canMove":[ "east", "south"]
     },
     {
       "coordinates": [
@@ -189,7 +259,41 @@
       "lootType": "weapon",
       "lootName": "Magic Staff",
       "lootAmount": 1,
-      "requiredKey": "Magic Key"
+      "requiredKey": "Magic Key",
+      "shopID": 0,
+      "canMove":["east", "south", "west"]
+    },
+    {
+      "coordinates": [
+        2,
+        0
+      ],
+      "description": "Unpassable Mountain Range",
+      "chanceOfEnemies": 1,
+      "enemyType": "Dragon",
+      "chanceOfLoot": 0.1,
+      "lootType": "health",
+      "lootName": "Apple",
+      "lootAmount": 1,
+      "requiredKey": "Climbing Gear",
+      "shopID": 0,
+      "canMove":["west"]
+    },
+    {
+      "coordinates": [
+        2,
+        1
+      ],
+      "description": "Dragons Cave.",
+      "chanceOfEnemies": 1,
+      "enemyType": "Dragon",
+      "chanceOfLoot": 0.1,
+      "lootType": "health",
+      "lootName": "Apple",
+      "lootAmount": 1,
+      "requiredKey": "Magic Key",
+      "shopID": 0,
+      "canMove":["west"]
     }
-  ]
+    ]
 }

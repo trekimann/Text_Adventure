@@ -331,8 +331,8 @@
         },
         {
             "coordinates": [
-                1,
-                0
+                0,
+                1
             ],
             "description": "The Base Kitchen. The walls show signs of gunfire. It looks like some of the SGC holed up in here.",
             "chanceOfEnemies": 0.3,
@@ -347,8 +347,8 @@
         },
         {
             "coordinates": [
-                2,
-                0
+                1,
+                2
             ],
             "description": "The Base Cafeteria. The walls show signs of gunfire. It looks like some of the SGC retreated here during the incursion.",
             "chanceOfEnemies": 0.3,
@@ -363,8 +363,8 @@
         },
         {
             "coordinates": [
-                3,
-                0
+                0,
+                3
             ],
             "description": "Stargate Guest Quarters. This room seems untouched by the incursion. It looks like there were no guests when the Jaffa arrived.",
             "chanceOfEnemies": 0.3,
@@ -379,8 +379,8 @@
         },
         {
             "coordinates": [
-                4,
-                0
+                0,
+                4
             ],
             "description": "Stargate Guest Quarters Bathroom. You don't know what compelled you to check the toilet but sometimes might find something useful.",
             "chanceOfEnemies": 1,
@@ -395,8 +395,8 @@
         },
         {
             "coordinates": [
-                0,
-                1
+                1,
+                0
             ],
             "description": "The Base Gymnasium. The Equipment is wracked with bullet holes and the walls are charred from energy weapon fire. It looks like the Jaffa were here.",
             "chanceOfEnemies": 0.8,
@@ -427,8 +427,8 @@
         },
         {
             "coordinates": [
-                2,
-                1
+                1,
+                2
             ],
             "description": "West Corridor. The walls are charred and pockmarked from energy weapon and machine gun fire. There are no bodies, that's a good sign",
             "chanceOfEnemies": 0.8,
@@ -443,8 +443,8 @@
         },
         {
             "coordinates": [
-                3,
-                1
+                1,
+                3
             ],
             "description": "North West Stairwell. There are a few Jaffa corpses here. It looks like they were trying to escape.",
             "chanceOfEnemies": 0.8,
@@ -459,8 +459,8 @@
         },
         {
             "coordinates": [
-                4,
-                1
+                1,
+                4
             ],
             "description": "Dr Daniel Jackson's Office. The walls are charred and pockmarked from energy weapon and machine gun fire. There are a few bodies here. You hope Daniel is ok.",
             "chanceOfEnemies": 0.1,
@@ -475,8 +475,8 @@
         },
         {
             "coordinates": [
-                0,
-                2
+                2,
+                0
             ],
             "description": "The Power room for the Stargate. All the power for the gate is routed through here. The walls are charred and pockmarked from energy weapon and machine gun fire. The power delivery equipment is beyond your ability to repair",
             "chanceOfEnemies": 1,
@@ -490,8 +490,8 @@
             "canMove":["north"]
         },{
             "coordinates": [
-                1,
-                2
+                2,
+                1
             ],
             "description": "The South Access Corridor. The walls show extensive charing but it looks like it came from the power room to the south instead of weapons fire.",
             "chanceOfEnemies": 0.8,
@@ -522,8 +522,8 @@
         },
         {
             "coordinates": [
-                3,
-                2
+                2,
+                3
             ],
             "description": "The Control Room. The blast shields are down and the chairs are strewn about the room. It looks like the base self destruct is active. You don't have long to retake the base.",
             "chanceOfEnemies": 0.8,
@@ -537,8 +537,8 @@
             "canMove":["north", "east", "west"]
         },{
             "coordinates": [
-                4,
-                2
+                2,
+                4
             ],
             "description": "The Conference Room. The desk is strewn with papers and the chairs are overturned. The walls are charred and pockmarked from energy weapon and machine gun fire. The floor has a few brave SGC personal laying dead on it.",
             "chanceOfEnemies": 0.8,
@@ -552,8 +552,8 @@
             "canMove":["east","south"]
         },{
             "coordinates": [
-                0,
-                3
+                3,
+                0
             ],
             "description": "The Infirmary. All the beds are empty, it looks like they were able to evacuate the wounded before the lockdown.",
             "chanceOfEnemies": 0.8,
@@ -567,8 +567,8 @@
             "canMove":["north", "east"]
         },{
             "coordinates": [
-                1,
-                3
+                3,
+                1
             ],
             "description": "The South East Corridor. The walls are charred and pockmarked from energy weapon and machine gun fire. The floor is covered in a thick layer of dust.",
             "chanceOfEnemies": 0.8,
@@ -582,8 +582,8 @@
             "canMove":["north", "east", "south","west"]
         },{
             "coordinates": [
-                2,
-                3
+                3,
+                2
             ],
             "description": "The East Corridor. There is extensive damage to the walls and floor from energy weapon and machine gun fire. With the armoury to the east this was likely a hot spot for the SGC.",
             "chanceOfEnemies": 0.5,
@@ -612,8 +612,8 @@
             "canMove":["east", "south","west"]
         },{
             "coordinates": [
-                4,
-                3
+                3,
+                4
             ],
             "description": "General Hammond's office. The walls are charred and pockmarked from energy weapon and machine gun fire. The desk is strewn with papers and the chair is overturned. The floor is covered in a thick layer of dust. Its likely Hammond is being held here.",
             "chanceOfEnemies": 1,
@@ -627,8 +627,8 @@
             "canMove":["west"]
         },{
             "coordinates": [
-                0,
-                4
+                4,
+                0
             ],
             "description": "Infirmary Stores. Looking around you can scrounge up some supplies in here.",
             "chanceOfEnemies": 0.6,
@@ -642,8 +642,8 @@
             "canMove":["west"]
         },{
             "coordinates": [
-                1,
-                4
+                4,
+                1
             ],
             "description": "The Base Recreation Room. The games and activities are all still here, but the room is in disarray. Your favourite pinball machine seems to be the only causality.",
             "chanceOfEnemies": 0.6,
@@ -657,8 +657,8 @@
             "canMove":["west"]
         },{
             "coordinates": [
-                2,
-                4
+                4,
+                2
             ],
             "description": "The Base Armoury. The room is mostly empty, but you can find a few weapons and ammo here.",
             "chanceOfEnemies": 0.9,
@@ -672,8 +672,8 @@
             "canMove":["west"]
         },{
             "coordinates": [
-                3,
-                4
+                4,
+                3
             ],
             "description": "Captain Carters Lab. This room seems pretty unscathed but there is no sign of Carter.",
             "chanceOfEnemies": 0.1,
