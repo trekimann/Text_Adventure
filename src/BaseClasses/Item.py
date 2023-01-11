@@ -1,6 +1,4 @@
 import src
-# from TextColour import TC
-
 tc = src.TC()
 
 class Item:
