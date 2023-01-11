@@ -217,8 +217,8 @@
     },
     {
       "coordinates": [
-        0,
-        1
+        1,
+        0
       ],
       "description": "The Spooky Cave is a dark and foreboding place. The air is musty and the walls are damp. You can hear the sound of dripping water in the distance, and you can see faint glimmers of light coming from deep within the cave. You're not sure what dangers may lurk within, but you know that you'll need to be careful if you want to survive.",
       "chanceOfEnemies": 1,
@@ -233,8 +233,8 @@
     },
     {
       "coordinates": [
-        1,
-        0
+        0,
+        1
       ],
       "description": "The Orc Fortress is a large, imposing structure made of rough, grey stone. It towers over the surrounding forest, casting a shadow over the nearby trees. The walls are adorned with various symbols and markings, likely denoting the strength and power of the Orc clan that resides within. The gates stand open, inviting adventurers to explore the dark corridors and chambers within. However, be warned: the Orcs are a fierce and dangerous race, and they will not hesitate to attack anyone who dares to enter their fortress.",
       "chanceOfEnemies": 0.3,
@@ -266,7 +266,7 @@
     {
       "coordinates": [
         2,
-        0
+        1
       ],
       "description": "Unpassable Mountain Range",
       "chanceOfEnemies": 1,
