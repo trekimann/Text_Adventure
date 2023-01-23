@@ -11,6 +11,7 @@ class Player(src.Character):
       armour = 10)
 
     self.inventory = {}
+    self.inventory['temporary_items'] = {}
     self.max_inventory_weight = 25
     self.max_health = 30
     self.max_armour = 30
@@ -109,11 +110,12 @@ class Player(src.Character):
   def get_inventory_weight(self):
     # Calculate total weight of items in inventory
     total_weight = 0
-    for item in self.inventory:
+    for item in self.inventory:    
       total_weight += self.inventory[item]['item'].weight * self.inventory[item]['count']
-    total_weight += self.wallet.wallet_weight()
-
     return total_weight
+
+  def get_all_carried_weight(self):
+    return self.wallet.wallet_weight() + self.get_inventory_weight()
 
   def display_inventory(self):
     print("Inventory:")
